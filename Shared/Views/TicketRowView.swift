@@ -1,8 +1,10 @@
 import SwiftUI
 
 struct TicketRow: View {
-    @Binding var ticket: Ticket
-    @State var isPresentingEditor = false
+    let ticket: Ticket
+    let onTicketUpdate: (Ticket) -> Void
+
+    @State private var isPresentingEditor = false
 
     var body: some View {
         Text(ticket.name)
@@ -14,16 +16,13 @@ struct TicketRow: View {
                 })
             }
             .sheet(isPresented: $isPresentingEditor) {
-                TicketView(ticket: ticket) { ticket in
-                    //Update API here?
-                    self.ticket = ticket
-                }
+                TicketView(ticket: ticket, onSave: onTicketUpdate)
             }
     }
 }
 
 struct TicketRow_Previews: PreviewProvider {
     static var previews: some View {
-        TicketRow(ticket: .constant(.mock))
+        TicketRow(ticket: .mock, onTicketUpdate: { _ in })
     }
 }

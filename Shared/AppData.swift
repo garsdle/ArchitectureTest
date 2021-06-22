@@ -2,7 +2,7 @@ import Foundation
 import SwiftUI
 
 class AppData: ObservableObject {
-    @Published var flights: [NestingFlight] = []
+    @Published private(set) var flights: [NestingFlight] = []
 
     func loadFlights() {
         current.api.getFlights()
@@ -10,10 +10,20 @@ class AppData: ObservableObject {
             .assign(to: &$flights)
     }
 
-    func update(ticketName: String, flightId: NestingFlight.ID, ticketId: Ticket.ID) {
+    func update(ticket: Ticket, flightId: NestingFlight.ID) {
         guard let flightIndex = flights.firstIndex(where: { $0.id == flightId }) else { return }
-        guard let ticketIndex = flights[flightIndex].tickets.firstIndex(where: { $0.id == ticketId }) else { return }
-        flights[flightIndex].tickets[ticketIndex].name = ticketName
+        guard let ticketIndex = flights[flightIndex].tickets.firstIndex(where: { $0.id == ticket.id }) else { return }
+        flights[flightIndex].tickets[ticketIndex] = ticket
+    }
+
+    func deleteFlight(at indexSet: IndexSet) {
+        flights.remove(atOffsets: indexSet)
+    }
+
+    func addTicket(flightId: Flight.ID) {
+        guard let flightIndex = flights.firstIndex(where: { $0.id == flightId }) else { return }
+        let newTicket = Ticket(id: UUID(), flightId: flightId)
+        flights[flightIndex].tickets.append(newTicket)
     }
 }
 
@@ -21,6 +31,10 @@ struct NestingFlight: Identifiable {
     let id: UUID
     var name: String { id.uuidString }
     var tickets: [Ticket]
+
+    static var mock: NestingFlight {
+        NestingFlight(id: .init(), tickets: [.mock, .mock])
+    }
 }
 
 struct Flight: Identifiable {
