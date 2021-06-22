@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -27,6 +27,7 @@
 		6F8963DD263F1A5A006A146F /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8963DB263F1A5A006A146F /* AppData.swift */; };
 		6FB89782268245F000C86912 /* ScopedGet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB89781268245F000C86912 /* ScopedGet.swift */; };
 		6FB89783268245F000C86912 /* ScopedGet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB89781268245F000C86912 /* ScopedGet.swift */; };
+		6FB897862682759200C86912 /* Difference in Frameworks */ = {isa = PBXBuildFile; productRef = 6FB897852682759200C86912 /* Difference */; };
 		6FC3D50E2644805400D8A5DE /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC3D50D2644805400D8A5DE /* API.swift */; };
 		6FC3D50F2644805400D8A5DE /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC3D50D2644805400D8A5DE /* API.swift */; };
 /* End PBXBuildFile section */
@@ -55,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6FB897862682759200C86912 /* Difference in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,6 +156,9 @@
 			dependencies = (
 			);
 			name = "ArchitectureTest (iOS)";
+			packageProductDependencies = (
+				6FB897852682759200C86912 /* Difference */,
+			);
 			productName = "ArchitectureTest (iOS)";
 			productReference = 6F5A25C72630D59200A81E56 /* ArchitectureTest.app */;
 			productType = "com.apple.product-type.application";
@@ -201,6 +206,9 @@
 				Base,
 			);
 			mainGroup = 6F5A25BA2630D59100A81E56;
+			packageReferences = (
+				6FB897842682759200C86912 /* XCRemoteSwiftPackageReference "Difference" */,
+			);
 			productRefGroup = 6F5A25C82630D59200A81E56 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -505,6 +513,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6FB897842682759200C86912 /* XCRemoteSwiftPackageReference "Difference" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/krzysztofzablocki/Difference.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.6.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6FB897852682759200C86912 /* Difference */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6FB897842682759200C86912 /* XCRemoteSwiftPackageReference "Difference" */;
+			productName = Difference;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6F5A25BB2630D59100A81E56 /* Project object */;
 }

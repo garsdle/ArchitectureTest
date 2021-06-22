@@ -1,8 +1,11 @@
 import Foundation
 import SwiftUI
+import Combine
 
 class AppData: ObservableObject {
     @Published private(set) var flights: [NestingFlight] = []
+
+    var cancelBag = Set<AnyCancellable>()
 
     func loadFlights() {
         current.api.getFlights()
@@ -10,24 +13,47 @@ class AppData: ObservableObject {
             .assign(to: &$flights)
     }
 
-    func update(ticket: Ticket, flightId: NestingFlight.ID) {
-        guard let flightIndex = flights.firstIndex(where: { $0.id == flightId }) else { return }
-        guard let ticketIndex = flights[flightIndex].tickets.firstIndex(where: { $0.id == ticket.id }) else { return }
-        flights[flightIndex].tickets[ticketIndex] = ticket
-    }
-
     func deleteFlight(at indexSet: IndexSet) {
+        indexSet
+            .map { flights[$0] }
+            .map { current.api.deleteFlight($0.id) }
+            .publisher
+            .sink { _ in }
+            .store(in: &cancelBag)
+
         flights.remove(atOffsets: indexSet)
     }
 
     func addTicket(flightId: Flight.ID) {
         guard let flightIndex = flights.firstIndex(where: { $0.id == flightId }) else { return }
         let newTicket = Ticket(id: UUID(), flightId: flightId)
+
+        current.api.addTicket(newTicket, flightId)
+            .sink(receiveCompletion: { _ in }, receiveValue: { })
+            .store(in: &cancelBag)
+
         flights[flightIndex].tickets.append(newTicket)
+    }
+
+    func update(ticket: Ticket, flightId: NestingFlight.ID) {
+        guard let flightIndex = flights.firstIndex(where: { $0.id == flightId }) else { return }
+        guard let ticketIndex = flights[flightIndex].tickets.firstIndex(where: { $0.id == ticket.id }) else { return }
+
+        current.api.updateTicket(ticket)
+            .sink { completion in
+                // TODO: Do something with error!
+            } receiveValue: {
+                // TODO: Should it only update locally on success?
+            }
+            .store(in: &cancelBag)
+
+        // TODO: And what about persisting
+
+        flights[flightIndex].tickets[ticketIndex] = ticket
     }
 }
 
-struct NestingFlight: Identifiable {
+struct NestingFlight: Identifiable, Equatable {
     let id: UUID
     var name: String { id.uuidString }
     var tickets: [Ticket]
@@ -37,7 +63,7 @@ struct NestingFlight: Identifiable {
     }
 }
 
-struct Flight: Identifiable {
+struct Flight: Identifiable, Equatable {
     let id: UUID
     var name: String { id.uuidString }
 
@@ -46,7 +72,7 @@ struct Flight: Identifiable {
     }
 }
 
-struct Ticket: Identifiable {
+struct Ticket: Identifiable, Equatable {
     let id: UUID
     let flightId: Flight.ID
     var name: String
