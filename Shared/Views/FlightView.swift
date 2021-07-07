@@ -13,7 +13,7 @@ struct FlightView: View {
                 }
             }
         }
-        .listStyle(GroupedListStyle())
+        .listStyle(InsetGroupedListStyle())
         .navigationTitle(flight.name)
         .navigationBarItems(trailing: Button("Add", action: onAddTicket))
     }

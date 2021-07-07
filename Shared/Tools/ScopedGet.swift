@@ -6,7 +6,7 @@ class ScopedGetObservable<T>: ObservableObject {
 
     let getter: () -> T
 
-    init<P>(getter: @autoclosure @escaping () -> T, publisher: P) where P: Publisher, P.Output == T, P.Failure == Never {
+    init<P>(getter: @autoclosure @escaping () -> T, publisher: P) where P: Publisher, P.Failure == Never {
         self.getter = getter
         cancellable = publisher.sink { [weak self] _ in
             self?.objectWillChange.send()
@@ -22,7 +22,7 @@ struct ScopedGet<T>: DynamicProperty {
 
     @ObservedObject private var scopedObservable: ScopedGetObservable<T>
 
-    init<P>(getter: @autoclosure @escaping () -> T, publisher: P) where P: Publisher, P.Output == T, P.Failure == Never {
+    init<P>(getter: @autoclosure @escaping () -> T, publisher: P) where P: Publisher, P.Failure == Never {
         self.scopedObservable = .init(getter: getter(), publisher: publisher)
     }
 }

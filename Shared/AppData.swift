@@ -1,11 +1,15 @@
 import Foundation
-import SwiftUI
 import Combine
 
-class AppData: ObservableObject {
+
+class AppData {
     @Published private(set) var flights: [NestingFlight] = []
 
     var cancelBag = Set<AnyCancellable>()
+
+    var ticketCount: Int {
+        flights.map(\.tickets.count).reduce(0, +)
+    }
 
     func loadFlights() {
         current.api.getFlights()
