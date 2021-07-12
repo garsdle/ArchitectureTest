@@ -1,48 +1,51 @@
 import Foundation
 import Combine
 
+class FlightService: ObservableObject {
+    @Published var flights: [Flight.ID: Flight] = [:]
+    @Published var selectedFlightId: Flight.ID?
 
-class AppData {
-    @Published private(set) var flights: [NestingFlight] = []
+    var cancelBag = Set<AnyCancellable>()
+
+    func loadFlights() {
+        current.api.getFlights()
+            .replaceError(with: [:])
+            .assign(to: &$flights)
+    }
+
+    func delete(flightId: Flight.ID) {
+        current.api.deleteFlight(flightId)
+            .sink(receiveCompletion: { _ in }, receiveValue: { _ in })
+            .store(in: &cancelBag)
+    }
+}
+
+class TicketService: ObservableObject {
+    @Published var tickets: [Ticket.ID: Ticket] = [:]
 
     var cancelBag = Set<AnyCancellable>()
 
     var ticketCount: Int {
-        flights.map(\.tickets.count).reduce(0, +)
+        tickets.count
     }
 
-    func loadFlights() {
-        current.api.getFlights()
-            .replaceError(with: [])
-            .assign(to: &$flights)
-    }
-
-    func deleteFlight(at indexSet: IndexSet) {
-        indexSet
-            .map { flights[$0] }
-            .map { current.api.deleteFlight($0.id) }
-            .publisher
-            .sink { _ in }
-            .store(in: &cancelBag)
-
-        flights.remove(atOffsets: indexSet)
+    func tickets(for flightId: Flight.ID) -> [Ticket] {
+        tickets.values
+            .filter { $0.flightId == flightId }
+            .sorted { $0.name < $1.name }
     }
 
     func addTicket(flightId: Flight.ID) {
-        guard let flightIndex = flights.firstIndex(where: { $0.id == flightId }) else { return }
         let newTicket = Ticket(id: UUID(), flightId: flightId)
 
         current.api.addTicket(newTicket, flightId)
             .sink(receiveCompletion: { _ in }, receiveValue: { })
             .store(in: &cancelBag)
 
-        flights[flightIndex].tickets.append(newTicket)
+        tickets[newTicket.id] = newTicket
     }
 
-    func update(ticket: Ticket, flightId: NestingFlight.ID) {
-        guard let flightIndex = flights.firstIndex(where: { $0.id == flightId }) else { return }
-        guard let ticketIndex = flights[flightIndex].tickets.firstIndex(where: { $0.id == ticket.id }) else { return }
-
+    func update(ticket: Ticket) {
         current.api.updateTicket(ticket)
             .sink { completion in
                 // TODO: Do something with error!
@@ -53,7 +56,13 @@ class AppData {
 
         // TODO: And what about persisting
 
-        flights[flightIndex].tickets[ticketIndex] = ticket
+        tickets[ticket.id] = ticket
+    }
+
+    func loadTickets() {
+        current.api.getTickets()
+            .replaceError(with: [:])
+            .assign(to: &$tickets)
     }
 }
 

@@ -1,6 +1,7 @@
 import Foundation
 import Combine
 import SwiftUI
+
 class ScopedGetObservable<T>: ObservableObject {
     var cancellable: AnyCancellable?
 

@@ -3,7 +3,10 @@ import Combine
 import Difference
 
 struct API {
-    let getFlights: () -> AnyPublisher<[NestingFlight], APIError>
+    let getNestedFlights: () -> AnyPublisher<[NestingFlight], APIError>
+    let getFlights: () -> AnyPublisher<[Flight.ID: Flight], APIError>
+    let getTickets: () -> AnyPublisher<[Ticket.ID: Ticket], APIError>
+
     let deleteFlight: (Flight.ID) -> AnyPublisher<Void, APIError>
     let addTicket: (Ticket, Flight.ID) -> AnyPublisher<Void, APIError>
     let updateTicket: (Ticket) -> AnyPublisher<Void, APIError>
@@ -11,17 +14,23 @@ struct API {
 
 extension API {
     static var mock: API {
-        API(getFlights: {
+        API(getNestedFlights: {
+                mockPublisher(mockServer.getNestedFlights())
+            },
+            getFlights: {
                 mockPublisher(mockServer.getFlights())
+            },
+            getTickets: {
+                mockPublisher(mockServer.getTickets())
             },
             deleteFlight: { flightId in
                 mockPublisher(mockServer.delete(flightId: flightId))
             },
             addTicket: { ticket, flightId in
-            mockPublisher(mockServer.add(ticket: ticket))
+                mockPublisher(mockServer.add(ticket: ticket))
             },
             updateTicket: { ticket in
-            mockPublisher(mockServer.update(ticket: ticket))
+                mockPublisher(mockServer.update(ticket: ticket))
             }
         )
     }
@@ -60,7 +69,15 @@ class MockServer {
         }
     }
 
-    func getFlights() -> [NestingFlight] {
+    func getFlights() -> [Flight.ID: Flight] {
+        flights
+    }
+
+    func getTickets() -> [Ticket.ID: Ticket] {
+        tickets
+    }
+
+    func getNestedFlights() -> [NestingFlight] {
         var nestingFlights = [NestingFlight.ID: NestingFlight]()
         flights.forEach { id, flight in
             nestingFlights[id] = NestingFlight(id: id, tickets: [])
