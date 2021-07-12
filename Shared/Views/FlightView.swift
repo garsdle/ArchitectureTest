@@ -4,7 +4,7 @@ struct FlightView: View {
     let flight: Flight
 
     var body: some View {
-        TicketsView(ticketsService: TicketService(), flightId: flight.id)
+        TicketsView(ticketsService: ticketService, flightId: flight.id)
         .navigationTitle(flight.name)
     }
 }
