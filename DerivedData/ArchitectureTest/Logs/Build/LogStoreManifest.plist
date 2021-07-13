@@ -6,7 +6,7 @@
 	<integer>10</integer>
 	<key>logs</key>
 	<dict>
-		<key>3D9B2EC2-35AC-4058-92AC-F440B65551BA</key>
+		<key>3B8015C9-0F4D-4CB3-A7D4-798CD1759C85</key>
 		<dict>
 			<key>className</key>
 			<string>IDEActivityLogSection</string>
@@ -15,7 +15,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>3D9B2EC2-35AC-4058-92AC-F440B65551BA.xcactivitylog</string>
+			<string>3B8015C9-0F4D-4CB3-A7D4-798CD1759C85.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -32,115 +32,13 @@
 			<key>signature</key>
 			<string>Build ArchitectureTest (iOS)</string>
 			<key>timeStartedRecording</key>
-			<real>647800827.06413996</real>
+			<real>647818960.86249697</real>
 			<key>timeStoppedRecording</key>
-			<real>647800830.47099698</real>
+			<real>647818963.00504005</real>
 			<key>title</key>
 			<string>Build ArchitectureTest (iOS)</string>
 			<key>uniqueIdentifier</key>
-			<string>3D9B2EC2-35AC-4058-92AC-F440B65551BA</string>
-		</dict>
-		<key>7388C371-0365-40DC-9812-CE9EE1CEA4A3</key>
-		<dict>
-			<key>className</key>
-			<string>IDEActivityLogSection</string>
-			<key>documentTypeString</key>
-			<string>&lt;nil&gt;</string>
-			<key>domainType</key>
-			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
-			<key>fileName</key>
-			<string>7388C371-0365-40DC-9812-CE9EE1CEA4A3.xcactivitylog</string>
-			<key>hasPrimaryLog</key>
-			<true/>
-			<key>primaryObservable</key>
-			<dict>
-				<key>highLevelStatus</key>
-				<string>S</string>
-			</dict>
-			<key>schemeIdentifier-containerName</key>
-			<string>ArchitectureTest project</string>
-			<key>schemeIdentifier-schemeName</key>
-			<string>ArchitectureTest (iOS)</string>
-			<key>schemeIdentifier-sharedScheme</key>
-			<integer>1</integer>
-			<key>signature</key>
-			<string>Build ArchitectureTest (iOS)</string>
-			<key>timeStartedRecording</key>
-			<real>647803522.16147804</real>
-			<key>timeStoppedRecording</key>
-			<real>647803522.26245499</real>
-			<key>title</key>
-			<string>Build ArchitectureTest (iOS)</string>
-			<key>uniqueIdentifier</key>
-			<string>7388C371-0365-40DC-9812-CE9EE1CEA4A3</string>
-		</dict>
-		<key>9646A031-33A4-4C93-B8E9-C44EDF843F89</key>
-		<dict>
-			<key>className</key>
-			<string>IDEActivityLogSection</string>
-			<key>documentTypeString</key>
-			<string>&lt;nil&gt;</string>
-			<key>domainType</key>
-			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
-			<key>fileName</key>
-			<string>9646A031-33A4-4C93-B8E9-C44EDF843F89.xcactivitylog</string>
-			<key>hasPrimaryLog</key>
-			<true/>
-			<key>primaryObservable</key>
-			<dict>
-				<key>highLevelStatus</key>
-				<string>S</string>
-			</dict>
-			<key>schemeIdentifier-containerName</key>
-			<string>ArchitectureTest project</string>
-			<key>schemeIdentifier-schemeName</key>
-			<string>ArchitectureTest (iOS)</string>
-			<key>schemeIdentifier-sharedScheme</key>
-			<integer>1</integer>
-			<key>signature</key>
-			<string>Build ArchitectureTest (iOS)</string>
-			<key>timeStartedRecording</key>
-			<real>647802723.97698796</real>
-			<key>timeStoppedRecording</key>
-			<real>647802725.04316795</real>
-			<key>title</key>
-			<string>Build ArchitectureTest (iOS)</string>
-			<key>uniqueIdentifier</key>
-			<string>9646A031-33A4-4C93-B8E9-C44EDF843F89</string>
-		</dict>
-		<key>BFDF663B-D61F-42F6-8760-6B09FE797F69</key>
-		<dict>
-			<key>className</key>
-			<string>IDEActivityLogSection</string>
-			<key>documentTypeString</key>
-			<string>&lt;nil&gt;</string>
-			<key>domainType</key>
-			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
-			<key>fileName</key>
-			<string>BFDF663B-D61F-42F6-8760-6B09FE797F69.xcactivitylog</string>
-			<key>hasPrimaryLog</key>
-			<true/>
-			<key>primaryObservable</key>
-			<dict>
-				<key>highLevelStatus</key>
-				<string>E</string>
-			</dict>
-			<key>schemeIdentifier-containerName</key>
-			<string>ArchitectureTest project</string>
-			<key>schemeIdentifier-schemeName</key>
-			<string>ArchitectureTest (iOS)</string>
-			<key>schemeIdentifier-sharedScheme</key>
-			<integer>1</integer>
-			<key>signature</key>
-			<string>Build ArchitectureTest (iOS)</string>
-			<key>timeStartedRecording</key>
-			<real>647800021.59015906</real>
-			<key>timeStoppedRecording</key>
-			<real>647800022.07373095</real>
-			<key>title</key>
-			<string>Build ArchitectureTest (iOS)</string>
-			<key>uniqueIdentifier</key>
-			<string>BFDF663B-D61F-42F6-8760-6B09FE797F69</string>
+			<string>3B8015C9-0F4D-4CB3-A7D4-798CD1759C85</string>
 		</dict>
 	</dict>
 </dict>

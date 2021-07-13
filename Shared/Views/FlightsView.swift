@@ -2,27 +2,16 @@ import SwiftUI
 
 struct FlightsView: View {
     @ObservedObject var flightService: FlightService
-    @ScopedGet(getter: ticketService.ticketCount, publisher: ticketService.$tickets) var ticketCount
-
-    // TODO: This is bad for performance!
-    var sortedFlights: [Flight] {
-        flightService.flights.values.sorted(by: { $0.name < $1.name })
-    }
+    @ScopedGet(getter: ticketService.ticketCount, publisher: ticketService.$tickets.count()) var ticketCount
 
     var body: some View {
         List {
             Text("Total Tickets: \(ticketCount)")
 
-            ForEach(sortedFlights) { flight in
+            ForEach(flightService.sortedFlights) { flight in
                 NavigationLink(flight.name, destination: FlightView(flight: flight))
             }
-            .onDelete { indexSet in
-                indexSet
-                    .map { sortedFlights[$0] }
-                    .forEach {
-                        flightService.delete(flightId: $0.id)
-                    }
-            }
+            .onDelete(perform: flightService.delete(_:))
         }
         .listStyle(InsetGroupedListStyle())
         .navigationTitle("Flights")
