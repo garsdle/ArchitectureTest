@@ -5,7 +5,7 @@ let appData = AppData()
 struct MainView: View {
     var body: some View {
         NavigationView {
-            FlightsView(destination: Text("Nothing yet"))
+            FlightsView()
         }
         .navigationViewStyle(StackNavigationViewStyle())
         .onAppear(perform: appData.loadFlights)
@@ -18,5 +18,3 @@ struct ContentView_Previews: PreviewProvider {
         MainView()
     }
 }
-
-
