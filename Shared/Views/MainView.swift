@@ -1,16 +1,15 @@
 import SwiftUI
 
-let flightService = FlightService()
-let ticketService = TicketService()
+let appData = AppData()
 
 struct MainView: View {
     var body: some View {
         NavigationView {
-            FlightsView(flightService: flightService)
+            FlightsView(destination: Text("Nothing yet"))
         }
         .navigationViewStyle(StackNavigationViewStyle())
-        .onAppear(perform: flightService.loadFlights)
-        .onAppear(perform: ticketService.loadTickets)
+        .onAppear(perform: appData.loadFlights)
+        .onAppear(perform: appData.loadTickets)
     }
 }
 

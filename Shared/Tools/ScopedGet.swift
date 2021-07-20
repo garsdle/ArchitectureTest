@@ -16,14 +16,14 @@ class ScopedGetObservable<T>: ObservableObject {
 }
 
 @propertyWrapper
-struct ScopedGet<T>: DynamicProperty {
-    var wrappedValue: T {
+struct ScopedGet<ScopedState>: DynamicProperty {
+    var wrappedValue: ScopedState {
         scopedObservable.getter()
     }
 
-    @ObservedObject private var scopedObservable: ScopedGetObservable<T>
+    @ObservedObject private var scopedObservable: ScopedGetObservable<ScopedState>
 
-    init<P>(getter: @autoclosure @escaping () -> T, publisher: P) where P: Publisher, P.Failure == Never {
+    init<P>(getter: @autoclosure @escaping () -> ScopedState, publisher: P) where P: Publisher, P.Failure == Never {
         self.scopedObservable = .init(getter: getter(), publisher: publisher)
     }
 }

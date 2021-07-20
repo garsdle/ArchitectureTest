@@ -1,17 +1,18 @@
 import SwiftUI
 
 struct FlightsView: View {
-    @ObservedObject var flightService: FlightService
-    @ScopedGet(getter: ticketService.ticketCount, publisher: ticketService.$tickets.count()) var ticketCount
+    @ScopedGet(getter: appData.ticketCount, publisher: appData.$tickets.map(\.count)) var ticketCount
+    @ScopedGet(getter: appData.sortedFlights, publisher: appData.$sortedFlights) var sortedFlights
 
     var body: some View {
         List {
             Text("Total Tickets: \(ticketCount)")
 
-            ForEach(flightService.sortedFlights) { flight in
-                NavigationLink(flight.name, destination: FlightView(flight: flight))
+            ForEach(sortedFlights) { flight in
+                Text(flight.name)
+//                NavigationLink(flight.name, destination: destination)
             }
-            .onDelete(perform: flightService.delete(_:))
+            .onDelete(perform: appData.delete(_:))
         }
         .listStyle(InsetGroupedListStyle())
         .navigationTitle("Flights")
@@ -20,6 +21,6 @@ struct FlightsView: View {
 
 struct FlightsView_Previews: PreviewProvider {
     static var previews: some View {
-        FlightsView(flightService: FlightService())
+        FlightsView()
     }
 }

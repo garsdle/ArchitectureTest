@@ -1,11 +1,40 @@
 import Foundation
 import Combine
 
-class TicketService: ObservableObject {
+class AppData: ObservableObject {
+    @Published private(set) var flights: [Flight.ID: Flight] = [:] {
+        didSet {
+            sortedFlights = flights.values.sorted(by: { $0.name < $1.name })
+        }
+    }
+    @Published private(set)var sortedFlights: [Flight] = []
+    @Published private(set) var selectedFlightId: Flight.ID?
+    
     @Published private(set) var tickets: [Ticket.ID: Ticket] = [:]
 
-    var cancelBag = Set<AnyCancellable>()
+    private var cancelBag = Set<AnyCancellable>()
+}
 
+extension AppData {
+    func loadFlights() {
+        current.api.getFlights()
+            .replaceError(with: [:])
+            .assign(to: &$flights)
+    }
+
+    func delete(_ indexSet: IndexSet) {
+        indexSet
+            .map { sortedFlights[$0].id }
+            .map(current.api.deleteFlight)
+            .forEach {
+                // FIXME: This needs to be done better
+                $0.sink(receiveCompletion: { _ in }, receiveValue: { _ in })
+                    .store(in: &cancelBag)
+            }
+    }
+}
+
+extension AppData {
     var ticketCount: Int {
         tickets.count
     }
