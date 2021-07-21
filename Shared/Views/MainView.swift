@@ -8,8 +8,10 @@ struct MainView: View {
             FlightsView()
         }
         .navigationViewStyle(StackNavigationViewStyle())
-        .onAppear(perform: appData.loadFlights)
-        .onAppear(perform: appData.loadTickets)
+        .onAppear {
+            appData.loadFlights()
+            appData.loadTickets()
+        }
     }
 }
 

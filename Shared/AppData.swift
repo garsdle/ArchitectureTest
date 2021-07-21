@@ -2,17 +2,22 @@ import Foundation
 import Combine
 
 class AppData: ObservableObject {
-    @Published private(set) var flights: [Flight.ID: Flight] = [:] {
-        didSet {
-            sortedFlights = flights.values.sorted(by: { $0.name < $1.name })
-        }
-    }
+    @Published private(set) var flights: [Flight.ID: Flight] = [:]
     @Published private(set)var sortedFlights: [Flight] = []
     @Published private(set) var selectedFlightId: Flight.ID?
     
     @Published private(set) var tickets: [Ticket.ID: Ticket] = [:]
 
     private var cancelBag = Set<AnyCancellable>()
+
+    init() {
+        $flights
+            .map(\.values)
+            .map { flights in
+                flights.sorted { $0.name < $1.name }
+            }
+            .assign(to: &$sortedFlights)
+    }
 }
 
 extension AppData {

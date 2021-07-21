@@ -9,8 +9,7 @@ struct FlightsView: View {
             Text("Total Tickets: \(ticketCount)")
 
             ForEach(sortedFlights) { flight in
-                Text(flight.name)
-//                NavigationLink(flight.name, destination: destination)
+                NavigationLink(flight.name, destination: FlightView(flightId: flight.id))
             }
             .onDelete(perform: appData.delete(_:))
         }
