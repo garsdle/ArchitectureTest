@@ -84,12 +84,12 @@ struct Ticket: Identifiable, Equatable {
 class MockServer {
     var flights = [Flight.ID: Flight]() {
         didSet {
-            print(dumpDiff(oldValue, flights))
+//            print(dumpDiff(oldValue, flights))
         }
     }
     var tickets = [Ticket.ID: Ticket]() {
         didSet {
-            print(dumpDiff(oldValue, tickets))
+//            print(dumpDiff(oldValue, tickets))
         }
     }
 
@@ -131,17 +131,17 @@ class MockServer {
             ticketPair.value.flightId != flightId
         }
         flights.removeValue(forKey: flightId)
-        print("􀪹 Deleted flight")
+//        print("􀪹 Deleted flight")
     }
 
     func add(ticket: Ticket) {
         tickets[ticket.id] = ticket
-        print("􀪹 Added ticket")
+//        print("􀪹 Added ticket")
     }
 
     func update(ticket: Ticket) {
         tickets[ticket.id] = ticket
-        print("􀪹 Updated ticket")
+//        print("􀪹 Updated ticket")
     }
 }
 

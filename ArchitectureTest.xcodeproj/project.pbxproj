@@ -23,15 +23,13 @@
 		6F5A25D62630D59300A81E56 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5A25C12630D59100A81E56 /* MainView.swift */; };
 		6F5A25D72630D59300A81E56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F5A25C22630D59200A81E56 /* Assets.xcassets */; };
 		6F5A25D82630D59300A81E56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F5A25C22630D59200A81E56 /* Assets.xcassets */; };
-		6F8963DC263F1A5A006A146F /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8963DB263F1A5A006A146F /* AppData.swift */; };
-		6F8963DD263F1A5A006A146F /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8963DB263F1A5A006A146F /* AppData.swift */; };
-		6F967DFD269DF58400B0DC0E /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 6F967DFC269DF58400B0DC0E /* ComposableArchitecture */; };
+		6F8963DC263F1A5A006A146F /* AppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8963DB263F1A5A006A146F /* AppStore.swift */; };
+		6F8963DD263F1A5A006A146F /* AppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8963DB263F1A5A006A146F /* AppStore.swift */; };
 		6FB89782268245F000C86912 /* ScopedGet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB89781268245F000C86912 /* ScopedGet.swift */; };
 		6FB89783268245F000C86912 /* ScopedGet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB89781268245F000C86912 /* ScopedGet.swift */; };
 		6FB897862682759200C86912 /* Difference in Frameworks */ = {isa = PBXBuildFile; productRef = 6FB897852682759200C86912 /* Difference */; };
 		6FC3D50E2644805400D8A5DE /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC3D50D2644805400D8A5DE /* API.swift */; };
 		6FC3D50F2644805400D8A5DE /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC3D50D2644805400D8A5DE /* API.swift */; };
-		6FD0710326A8AA12003089B2 /* PublisherView in Frameworks */ = {isa = PBXBuildFile; productRef = 6FD0710226A8AA12003089B2 /* PublisherView */; };
 		6FD4460B26965FB50080BC3D /* FlightsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD4460A26965FB50080BC3D /* FlightsView.swift */; };
 		6FD4460C26965FB50080BC3D /* FlightsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD4460A26965FB50080BC3D /* FlightsView.swift */; };
 /* End PBXBuildFile section */
@@ -50,7 +48,7 @@
 		6F5A25CF2630D59300A81E56 /* ArchitectureTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArchitectureTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F5A25D12630D59300A81E56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6F5A25D22630D59300A81E56 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
-		6F8963DB263F1A5A006A146F /* AppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
+		6F8963DB263F1A5A006A146F /* AppStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStore.swift; sourceTree = "<group>"; };
 		6FB89781268245F000C86912 /* ScopedGet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScopedGet.swift; sourceTree = "<group>"; };
 		6FC3D50D2644805400D8A5DE /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		6FD4460A26965FB50080BC3D /* FlightsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightsView.swift; sourceTree = "<group>"; };
@@ -61,8 +59,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6FD0710326A8AA12003089B2 /* PublisherView in Frameworks */,
-				6F967DFD269DF58400B0DC0E /* ComposableArchitecture in Frameworks */,
 				6FB897862682759200C86912 /* Difference in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -111,10 +107,10 @@
 		6F5A25BF2630D59100A81E56 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				6F5A25C02630D59100A81E56 /* ArchitectureTestApp.swift */,
+				6F8963DB263F1A5A006A146F /* AppStore.swift */,
 				6F5523342644572200C2E3BF /* AppEnvironment.swift */,
 				6FC3D50D2644805400D8A5DE /* API.swift */,
-				6F8963DB263F1A5A006A146F /* AppData.swift */,
-				6F5A25C02630D59100A81E56 /* ArchitectureTestApp.swift */,
 				6F4F7ACA2680117600F0686D /* Views */,
 				6F4F7AC9268009D300F0686D /* Tools */,
 				6F5A25C22630D59200A81E56 /* Assets.xcassets */,
@@ -166,8 +162,6 @@
 			name = "ArchitectureTest (iOS)";
 			packageProductDependencies = (
 				6FB897852682759200C86912 /* Difference */,
-				6F967DFC269DF58400B0DC0E /* ComposableArchitecture */,
-				6FD0710226A8AA12003089B2 /* PublisherView */,
 			);
 			productName = "ArchitectureTest (iOS)";
 			productReference = 6F5A25C72630D59200A81E56 /* ArchitectureTest.app */;
@@ -218,8 +212,6 @@
 			mainGroup = 6F5A25BA2630D59100A81E56;
 			packageReferences = (
 				6FB897842682759200C86912 /* XCRemoteSwiftPackageReference "Difference" */,
-				6F967DFB269DF58400B0DC0E /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
-				6FD0710126A8AA12003089B2 /* XCRemoteSwiftPackageReference "PublisherView" */,
 			);
 			productRefGroup = 6F5A25C82630D59200A81E56 /* Products */;
 			projectDirPath = "";
@@ -264,7 +256,7 @@
 				6F5A25D32630D59300A81E56 /* ArchitectureTestApp.swift in Sources */,
 				6FD4460B26965FB50080BC3D /* FlightsView.swift in Sources */,
 				6F5523352644572200C2E3BF /* AppEnvironment.swift in Sources */,
-				6F8963DC263F1A5A006A146F /* AppData.swift in Sources */,
+				6F8963DC263F1A5A006A146F /* AppStore.swift in Sources */,
 				6FC3D50E2644805400D8A5DE /* API.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -282,7 +274,7 @@
 				6F5A25D42630D59300A81E56 /* ArchitectureTestApp.swift in Sources */,
 				6FD4460C26965FB50080BC3D /* FlightsView.swift in Sources */,
 				6F5523362644572200C2E3BF /* AppEnvironment.swift in Sources */,
-				6F8963DD263F1A5A006A146F /* AppData.swift in Sources */,
+				6F8963DD263F1A5A006A146F /* AppStore.swift in Sources */,
 				6FC3D50F2644805400D8A5DE /* API.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -529,14 +521,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		6F967DFB269DF58400B0DC0E /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.9.0;
-			};
-		};
 		6FB897842682759200C86912 /* XCRemoteSwiftPackageReference "Difference" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/krzysztofzablocki/Difference.git";
@@ -545,31 +529,13 @@
 				minimumVersion = 0.6.0;
 			};
 		};
-		6FD0710126A8AA12003089B2 /* XCRemoteSwiftPackageReference "PublisherView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/danielctull/PublisherView.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		6F967DFC269DF58400B0DC0E /* ComposableArchitecture */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 6F967DFB269DF58400B0DC0E /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
-			productName = ComposableArchitecture;
-		};
 		6FB897852682759200C86912 /* Difference */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 6FB897842682759200C86912 /* XCRemoteSwiftPackageReference "Difference" */;
 			productName = Difference;
-		};
-		6FD0710226A8AA12003089B2 /* PublisherView */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 6FD0710126A8AA12003089B2 /* XCRemoteSwiftPackageReference "PublisherView" */;
-			productName = PublisherView;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
