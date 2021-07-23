@@ -29,11 +29,11 @@ struct FlightView: View {
         .navigationTitle(state.flight.name)
     }
 }
-
-
-struct FlightView_Previews: PreviewProvider {
-    static var previews: some View {
-        FlightView(state: appStore.scope( { FlightState(appState: $0, flight: .mock) }))
-    }
-}
-
+//
+//
+//struct FlightView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        FlightView(state: appStore.scope( { FlightState(appState: $0, flight: .mock) }))
+//    }
+//}
+//

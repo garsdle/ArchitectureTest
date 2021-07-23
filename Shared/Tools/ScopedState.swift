@@ -19,13 +19,9 @@ struct Scoped<ScopedState>: DynamicProperty {
     }
 
     @StateObject var scopedObservable: ScopedStateObservable<ScopedState>
-
-
-//    func scope<Substate>(_ keyPath: WritableKeyPath<ScopedState, Substate>) -> Scoped<Substate> {
-//        Scoped<Substate>(getter: wrappedValue[keyPath: keyPath], publisher: scopedObservable.objectWillChange)
-//    }
 }
 
+@dynamicMemberLookup
 class Store<State: Equatable>: ObservableObject {
     @Published var state: State
 
@@ -47,6 +43,10 @@ class Store<State: Equatable>: ObservableObject {
     func scope() -> Scoped<State> {
         Scoped(scopedObservable: ScopedStateObservable(initialValue: self.state,
                                                        publisher: self.$state.removeDuplicates()))
+    }
+
+    subscript<T>(dynamicMember keyPath: KeyPath<State, T>) -> T {
+        state[keyPath: keyPath]
     }
 }
 

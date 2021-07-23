@@ -5,7 +5,7 @@ struct AppView: View {
 
     var body: some View {
         NavigationView {
-            FlightsView(state: appStore.scope(FlightsState.init(appState:)))
+            FlightsView(state: appStore.scope( { _ in FlightsState(appStore: appStore) }))
         }
         .navigationViewStyle(StackNavigationViewStyle())
         .onAppear {
