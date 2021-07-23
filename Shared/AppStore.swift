@@ -1,27 +1,14 @@
 import Foundation
 import Combine
 
+// This looks a lot like just an in memory DB now...
 struct AppState: Equatable {
-    var flights: [Flight.ID: Flight] = [:] {
-        didSet {
-            sortedFlights = flights.values.sorted { $0.name < $1.name }
-        }
-    }
-     var sortedFlights: [Flight] = []
-     var selectedFlightId: Flight.ID?
-
-     var tickets: [Ticket.ID: Ticket] = [:]
+    var flights: [Flight.ID: Flight] = [:]
+    var tickets: [Ticket.ID: Ticket] = [:]
 }
 
-@dynamicMemberLookup
 class AppStore: Store<AppState> {
-    @Published private(set) var appState = AppState()
-
     private var cancelBag = Set<AnyCancellable>()
-
-    subscript<T>(dynamicMember keyPath: KeyPath<AppState, T>) -> T {
-        appState[keyPath: keyPath]
-    }
 }
 
 extension AppStore {
@@ -29,19 +16,16 @@ extension AppStore {
         current.api.getFlights()
             .replaceError(with: [:])
             .sink { [weak self] flights in
-                self?.appState.flights = flights
+                self?.state.flights = flights
             }
             .store(in: &cancelBag)
     }
 
-    func delete(_ indexSet: IndexSet) {
-        guard let index = indexSet.first else { return }
-        let flight = appState.sortedFlights[index]
-        appState.flights.removeValue(forKey: flight.id)
-
-        //This is not optimal but can be looked at later..
-        appState.tickets = appState.tickets.filter { $0.value.flightId != flight.id}
-        current.api.deleteFlight(flight.id)
+    func delete(flightId: Flight.ID) {
+        state.tickets = state.tickets.filter { $0.value.flightId != flightId}
+        state.flights.removeValue(forKey: flightId)
+        
+        current.api.deleteFlight(flightId)
             .sink(receiveCompletion: { _ in }, receiveValue: { _ in })
             .store(in: &cancelBag)
     }
@@ -49,11 +33,11 @@ extension AppStore {
 
 extension AppStore {
     var ticketCount: Int {
-        appState.tickets.count
+        state.tickets.count
     }
 
     func tickets(for flightId: Flight.ID) -> [Ticket] {
-        appState.tickets.values
+        state.tickets.values
             .filter { $0.flightId == flightId }
             .sorted { $0.name < $1.name }
     }
@@ -65,7 +49,7 @@ extension AppStore {
             .sink(receiveCompletion: { _ in }, receiveValue: { })
             .store(in: &cancelBag)
 
-        appState.tickets[newTicket.id] = newTicket
+        state.tickets[newTicket.id] = newTicket
     }
 
     func update(ticket: Ticket) {
@@ -77,17 +61,32 @@ extension AppStore {
             }
             .store(in: &cancelBag)
 
-        // TODO: And what about persisting
+        // TODO: And what about persisting to disk
 
-        appState.tickets[ticket.id] = ticket
+        state.tickets[ticket.id] = ticket
     }
 
     func loadTickets() {
         current.api.getTickets()
             .replaceError(with: [:])
             .sink { [weak self] tickets in
-                self?.appState.tickets = tickets
+                self?.state.tickets = tickets
             }
             .store(in: &cancelBag)
+    }
+}
+
+import SwiftUI
+
+extension EnvironmentValues {
+    var appStore: AppStore {
+        get { self[AppStore.self] }
+        set { self[AppStore.self] = newValue }
+    }
+}
+
+extension AppStore: EnvironmentKey {
+    static var defaultValue: AppStore {
+        AppStore(initialState: .init())
     }
 }

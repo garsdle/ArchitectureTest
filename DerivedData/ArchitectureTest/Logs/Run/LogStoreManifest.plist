@@ -6,7 +6,7 @@
 	<integer>10</integer>
 	<key>logs</key>
 	<dict>
-		<key>04A32E39-B6E2-4EB9-9186-B42A041ED464</key>
+		<key>084AEAD1-B8C8-4E5E-8069-17C5465F955C</key>
 		<dict>
 			<key>className</key>
 			<string>DBGConsoleLog</string>
@@ -15,7 +15,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
 			<key>fileName</key>
-			<string>04A32E39-B6E2-4EB9-9186-B42A041ED464.xcactivitylog</string>
+			<string>084AEAD1-B8C8-4E5E-8069-17C5465F955C.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -32,15 +32,15 @@
 			<key>signature</key>
 			<string>Run ArchitectureTest</string>
 			<key>timeStartedRecording</key>
-			<real>648707122.44691002</real>
+			<real>648751489.23607302</real>
 			<key>timeStoppedRecording</key>
-			<real>648707208.36594903</real>
+			<real>648752051.96174204</real>
 			<key>title</key>
 			<string>Run ArchitectureTest</string>
 			<key>uniqueIdentifier</key>
-			<string>04A32E39-B6E2-4EB9-9186-B42A041ED464</string>
+			<string>084AEAD1-B8C8-4E5E-8069-17C5465F955C</string>
 		</dict>
-		<key>0CF4B165-4B82-4C93-8529-FEFD1C49D8A0</key>
+		<key>0B331D90-3888-40A7-A199-65CA48622B6F</key>
 		<dict>
 			<key>className</key>
 			<string>DBGConsoleLog</string>
@@ -49,7 +49,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
 			<key>fileName</key>
-			<string>0CF4B165-4B82-4C93-8529-FEFD1C49D8A0.xcactivitylog</string>
+			<string>0B331D90-3888-40A7-A199-65CA48622B6F.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -66,15 +66,15 @@
 			<key>signature</key>
 			<string>Run ArchitectureTest</string>
 			<key>timeStartedRecording</key>
-			<real>648709737.249295</real>
+			<real>648748923.95159996</real>
 			<key>timeStoppedRecording</key>
-			<real>648709802.58709002</real>
+			<real>648748932.65483797</real>
 			<key>title</key>
 			<string>Run ArchitectureTest</string>
 			<key>uniqueIdentifier</key>
-			<string>0CF4B165-4B82-4C93-8529-FEFD1C49D8A0</string>
+			<string>0B331D90-3888-40A7-A199-65CA48622B6F</string>
 		</dict>
-		<key>0DE8E8A6-6CC3-4E15-97C2-5C4514119EAC</key>
+		<key>0E7737C9-F992-4223-B8EA-4EBE7A0B8A68</key>
 		<dict>
 			<key>className</key>
 			<string>DBGConsoleLog</string>
@@ -83,7 +83,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
 			<key>fileName</key>
-			<string>0DE8E8A6-6CC3-4E15-97C2-5C4514119EAC.xcactivitylog</string>
+			<string>0E7737C9-F992-4223-B8EA-4EBE7A0B8A68.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -100,15 +100,15 @@
 			<key>signature</key>
 			<string>Run ArchitectureTest</string>
 			<key>timeStartedRecording</key>
-			<real>648706741.509359</real>
+			<real>648749094.471398</real>
 			<key>timeStoppedRecording</key>
-			<real>648706955.10793996</real>
+			<real>648749270.72029102</real>
 			<key>title</key>
 			<string>Run ArchitectureTest</string>
 			<key>uniqueIdentifier</key>
-			<string>0DE8E8A6-6CC3-4E15-97C2-5C4514119EAC</string>
+			<string>0E7737C9-F992-4223-B8EA-4EBE7A0B8A68</string>
 		</dict>
-		<key>18B40CB3-7B82-44C5-9647-D88AC97B1CBB</key>
+		<key>3112FB65-0FFC-47AB-A4AA-AE665B25A449</key>
 		<dict>
 			<key>className</key>
 			<string>DBGConsoleLog</string>
@@ -117,7 +117,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
 			<key>fileName</key>
-			<string>18B40CB3-7B82-44C5-9647-D88AC97B1CBB.xcactivitylog</string>
+			<string>3112FB65-0FFC-47AB-A4AA-AE665B25A449.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -134,15 +134,15 @@
 			<key>signature</key>
 			<string>Run ArchitectureTest</string>
 			<key>timeStartedRecording</key>
-			<real>648709652.04593098</real>
+			<real>648748979.50930905</real>
 			<key>timeStoppedRecording</key>
-			<real>648709661.95116496</real>
+			<real>648749085.21024001</real>
 			<key>title</key>
 			<string>Run ArchitectureTest</string>
 			<key>uniqueIdentifier</key>
-			<string>18B40CB3-7B82-44C5-9647-D88AC97B1CBB</string>
+			<string>3112FB65-0FFC-47AB-A4AA-AE665B25A449</string>
 		</dict>
-		<key>2480799A-C88B-4418-93E4-E3246E4FC02C</key>
+		<key>34AABAD7-D93D-4167-BB25-5FD6A0382B39</key>
 		<dict>
 			<key>className</key>
 			<string>DBGConsoleLog</string>
@@ -151,7 +151,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
 			<key>fileName</key>
-			<string>2480799A-C88B-4418-93E4-E3246E4FC02C.xcactivitylog</string>
+			<string>34AABAD7-D93D-4167-BB25-5FD6A0382B39.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -168,15 +168,15 @@
 			<key>signature</key>
 			<string>Run ArchitectureTest</string>
 			<key>timeStartedRecording</key>
-			<real>648709662.73926997</real>
+			<real>648750581.06641304</real>
 			<key>timeStoppedRecording</key>
-			<real>648709667.38969195</real>
+			<real>648750940.38322496</real>
 			<key>title</key>
 			<string>Run ArchitectureTest</string>
 			<key>uniqueIdentifier</key>
-			<string>2480799A-C88B-4418-93E4-E3246E4FC02C</string>
+			<string>34AABAD7-D93D-4167-BB25-5FD6A0382B39</string>
 		</dict>
-		<key>4B343797-037C-4647-8956-619BE64A4922</key>
+		<key>49DE21BB-E5DC-4958-A138-E5070CD8E767</key>
 		<dict>
 			<key>className</key>
 			<string>DBGConsoleLog</string>
@@ -185,7 +185,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
 			<key>fileName</key>
-			<string>4B343797-037C-4647-8956-619BE64A4922.xcactivitylog</string>
+			<string>49DE21BB-E5DC-4958-A138-E5070CD8E767.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -202,15 +202,15 @@
 			<key>signature</key>
 			<string>Run ArchitectureTest</string>
 			<key>timeStartedRecording</key>
-			<real>648709668.23519397</real>
+			<real>648748887.34351397</real>
 			<key>timeStoppedRecording</key>
-			<real>648709678.76757598</real>
+			<real>648748922.90058601</real>
 			<key>title</key>
 			<string>Run ArchitectureTest</string>
 			<key>uniqueIdentifier</key>
-			<string>4B343797-037C-4647-8956-619BE64A4922</string>
+			<string>49DE21BB-E5DC-4958-A138-E5070CD8E767</string>
 		</dict>
-		<key>56996546-70D9-4066-A2F4-00E31CFB4F90</key>
+		<key>4E4F0C18-816A-424D-86B0-CE8A0F21163A</key>
 		<dict>
 			<key>className</key>
 			<string>DBGConsoleLog</string>
@@ -219,7 +219,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
 			<key>fileName</key>
-			<string>56996546-70D9-4066-A2F4-00E31CFB4F90.xcactivitylog</string>
+			<string>4E4F0C18-816A-424D-86B0-CE8A0F21163A.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -236,15 +236,15 @@
 			<key>signature</key>
 			<string>Run ArchitectureTest</string>
 			<key>timeStartedRecording</key>
-			<real>648708683.88285303</real>
+			<real>648748859.77135706</real>
 			<key>timeStoppedRecording</key>
-			<real>648708711.24129796</real>
+			<real>648748887.41387606</real>
 			<key>title</key>
 			<string>Run ArchitectureTest</string>
 			<key>uniqueIdentifier</key>
-			<string>56996546-70D9-4066-A2F4-00E31CFB4F90</string>
+			<string>4E4F0C18-816A-424D-86B0-CE8A0F21163A</string>
 		</dict>
-		<key>5A84B0C1-6613-4B16-80BF-FC8A34351EF5</key>
+		<key>57E9CE08-8084-4898-A4CB-181487CF966F</key>
 		<dict>
 			<key>className</key>
 			<string>DBGConsoleLog</string>
@@ -253,7 +253,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
 			<key>fileName</key>
-			<string>5A84B0C1-6613-4B16-80BF-FC8A34351EF5.xcactivitylog</string>
+			<string>57E9CE08-8084-4898-A4CB-181487CF966F.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -270,15 +270,15 @@
 			<key>signature</key>
 			<string>Run ArchitectureTest</string>
 			<key>timeStartedRecording</key>
-			<real>648697418.74132502</real>
+			<real>648749086.229159</real>
 			<key>timeStoppedRecording</key>
-			<real>648697527.47113502</real>
+			<real>648749093.531739</real>
 			<key>title</key>
 			<string>Run ArchitectureTest</string>
 			<key>uniqueIdentifier</key>
-			<string>5A84B0C1-6613-4B16-80BF-FC8A34351EF5</string>
+			<string>57E9CE08-8084-4898-A4CB-181487CF966F</string>
 		</dict>
-		<key>63DD23AB-8683-456D-B6F9-A2FA1C32C72C</key>
+		<key>6EAB1E80-620A-40E8-A0A4-1F5011A72FC7</key>
 		<dict>
 			<key>className</key>
 			<string>DBGConsoleLog</string>
@@ -287,7 +287,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
 			<key>fileName</key>
-			<string>63DD23AB-8683-456D-B6F9-A2FA1C32C72C.xcactivitylog</string>
+			<string>6EAB1E80-620A-40E8-A0A4-1F5011A72FC7.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -304,15 +304,15 @@
 			<key>signature</key>
 			<string>Run ArchitectureTest</string>
 			<key>timeStartedRecording</key>
-			<real>648709395.659706</real>
+			<real>648751028.32728195</real>
 			<key>timeStoppedRecording</key>
-			<real>648709449.992908</real>
+			<real>648751303.07437396</real>
 			<key>title</key>
 			<string>Run ArchitectureTest</string>
 			<key>uniqueIdentifier</key>
-			<string>63DD23AB-8683-456D-B6F9-A2FA1C32C72C</string>
+			<string>6EAB1E80-620A-40E8-A0A4-1F5011A72FC7</string>
 		</dict>
-		<key>A4AA17F4-F51D-46B1-B6B6-3C7AFAB457D6</key>
+		<key>7247C716-1BCE-4520-A710-58EB61CF7369</key>
 		<dict>
 			<key>className</key>
 			<string>DBGConsoleLog</string>
@@ -321,7 +321,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
 			<key>fileName</key>
-			<string>A4AA17F4-F51D-46B1-B6B6-3C7AFAB457D6.xcactivitylog</string>
+			<string>7247C716-1BCE-4520-A710-58EB61CF7369.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -338,15 +338,15 @@
 			<key>signature</key>
 			<string>Run ArchitectureTest</string>
 			<key>timeStartedRecording</key>
-			<real>648709679.63258696</real>
+			<real>648749426.041803</real>
 			<key>timeStoppedRecording</key>
-			<real>648709736.31988096</real>
+			<real>648749599.95416999</real>
 			<key>title</key>
 			<string>Run ArchitectureTest</string>
 			<key>uniqueIdentifier</key>
-			<string>A4AA17F4-F51D-46B1-B6B6-3C7AFAB457D6</string>
+			<string>7247C716-1BCE-4520-A710-58EB61CF7369</string>
 		</dict>
-		<key>AD55C4F1-AB2D-4A55-881D-7AB30DD0575C</key>
+		<key>7D6F6B3A-9A9E-4B99-87E8-92973673006F</key>
 		<dict>
 			<key>className</key>
 			<string>DBGConsoleLog</string>
@@ -355,7 +355,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
 			<key>fileName</key>
-			<string>AD55C4F1-AB2D-4A55-881D-7AB30DD0575C.xcactivitylog</string>
+			<string>7D6F6B3A-9A9E-4B99-87E8-92973673006F.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -372,15 +372,15 @@
 			<key>signature</key>
 			<string>Run ArchitectureTest</string>
 			<key>timeStartedRecording</key>
-			<real>648712608.32706201</real>
+			<real>648749382.76415396</real>
 			<key>timeStoppedRecording</key>
-			<real>648712622.33771002</real>
+			<real>648749425.18384397</real>
 			<key>title</key>
 			<string>Run ArchitectureTest</string>
 			<key>uniqueIdentifier</key>
-			<string>AD55C4F1-AB2D-4A55-881D-7AB30DD0575C</string>
+			<string>7D6F6B3A-9A9E-4B99-87E8-92973673006F</string>
 		</dict>
-		<key>B663BA99-1939-4AE6-8804-DAC1CC60BF99</key>
+		<key>82C5CCC5-3074-46E6-B222-AB65EF7768D2</key>
 		<dict>
 			<key>className</key>
 			<string>DBGConsoleLog</string>
@@ -389,7 +389,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
 			<key>fileName</key>
-			<string>B663BA99-1939-4AE6-8804-DAC1CC60BF99.xcactivitylog</string>
+			<string>82C5CCC5-3074-46E6-B222-AB65EF7768D2.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -406,15 +406,15 @@
 			<key>signature</key>
 			<string>Run ArchitectureTest</string>
 			<key>timeStartedRecording</key>
-			<real>648709449.86746001</real>
+			<real>648752052.58635795</real>
 			<key>timeStoppedRecording</key>
-			<real>648709509.57323301</real>
+			<real>648752286.19781995</real>
 			<key>title</key>
 			<string>Run ArchitectureTest</string>
 			<key>uniqueIdentifier</key>
-			<string>B663BA99-1939-4AE6-8804-DAC1CC60BF99</string>
+			<string>82C5CCC5-3074-46E6-B222-AB65EF7768D2</string>
 		</dict>
-		<key>C119A2DB-66E5-4CCE-915A-108FEFEB71DF</key>
+		<key>A9FB662E-212C-4A51-A43A-A0AF3762BE96</key>
 		<dict>
 			<key>className</key>
 			<string>DBGConsoleLog</string>
@@ -423,7 +423,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
 			<key>fileName</key>
-			<string>C119A2DB-66E5-4CCE-915A-108FEFEB71DF.xcactivitylog</string>
+			<string>A9FB662E-212C-4A51-A43A-A0AF3762BE96.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -440,15 +440,15 @@
 			<key>signature</key>
 			<string>Run ArchitectureTest</string>
 			<key>timeStartedRecording</key>
-			<real>648707236.45432794</real>
+			<real>648747821.52834702</real>
 			<key>timeStoppedRecording</key>
-			<real>648708683.13517404</real>
+			<real>648748859.83326304</real>
 			<key>title</key>
 			<string>Run ArchitectureTest</string>
 			<key>uniqueIdentifier</key>
-			<string>C119A2DB-66E5-4CCE-915A-108FEFEB71DF</string>
+			<string>A9FB662E-212C-4A51-A43A-A0AF3762BE96</string>
 		</dict>
-		<key>C595FA3F-EC3A-4076-81A5-7E1BB62CAD33</key>
+		<key>B418D069-9065-4005-B1F5-A950E9FB78ED</key>
 		<dict>
 			<key>className</key>
 			<string>DBGConsoleLog</string>
@@ -457,7 +457,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
 			<key>fileName</key>
-			<string>C595FA3F-EC3A-4076-81A5-7E1BB62CAD33.xcactivitylog</string>
+			<string>B418D069-9065-4005-B1F5-A950E9FB78ED.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -474,15 +474,15 @@
 			<key>signature</key>
 			<string>Run ArchitectureTest</string>
 			<key>timeStartedRecording</key>
-			<real>648706632.90386796</real>
+			<real>648749330.43732297</real>
 			<key>timeStoppedRecording</key>
-			<real>648706741.61688006</real>
+			<real>648749382.84413505</real>
 			<key>title</key>
 			<string>Run ArchitectureTest</string>
 			<key>uniqueIdentifier</key>
-			<string>C595FA3F-EC3A-4076-81A5-7E1BB62CAD33</string>
+			<string>B418D069-9065-4005-B1F5-A950E9FB78ED</string>
 		</dict>
-		<key>C8612E53-13E4-4347-A782-0235D5E64D64</key>
+		<key>C9FD6549-FA37-489F-AC75-8E2536DAD17A</key>
 		<dict>
 			<key>className</key>
 			<string>DBGConsoleLog</string>
@@ -491,7 +491,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
 			<key>fileName</key>
-			<string>C8612E53-13E4-4347-A782-0235D5E64D64.xcactivitylog</string>
+			<string>C9FD6549-FA37-489F-AC75-8E2536DAD17A.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -508,15 +508,15 @@
 			<key>signature</key>
 			<string>Run ArchitectureTest</string>
 			<key>timeStartedRecording</key>
-			<real>648709803.83335197</real>
+			<real>648750111.94288802</real>
 			<key>timeStoppedRecording</key>
-			<real>648712607.73457694</real>
+			<real>648750581.13152099</real>
 			<key>title</key>
 			<string>Run ArchitectureTest</string>
 			<key>uniqueIdentifier</key>
-			<string>C8612E53-13E4-4347-A782-0235D5E64D64</string>
+			<string>C9FD6549-FA37-489F-AC75-8E2536DAD17A</string>
 		</dict>
-		<key>CECD596A-A6B4-4D0F-904A-CDF3AA402571</key>
+		<key>DA4FC40C-04D9-42D8-9C49-FEB7D3AF4C13</key>
 		<dict>
 			<key>className</key>
 			<string>DBGConsoleLog</string>
@@ -525,7 +525,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
 			<key>fileName</key>
-			<string>CECD596A-A6B4-4D0F-904A-CDF3AA402571.xcactivitylog</string>
+			<string>DA4FC40C-04D9-42D8-9C49-FEB7D3AF4C13.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -542,15 +542,15 @@
 			<key>signature</key>
 			<string>Run ArchitectureTest</string>
 			<key>timeStartedRecording</key>
-			<real>648706956.37085295</real>
+			<real>648748934.02461803</real>
 			<key>timeStoppedRecording</key>
-			<real>648707122.53673196</real>
+			<real>648748978.20083106</real>
 			<key>title</key>
 			<string>Run ArchitectureTest</string>
 			<key>uniqueIdentifier</key>
-			<string>CECD596A-A6B4-4D0F-904A-CDF3AA402571</string>
+			<string>DA4FC40C-04D9-42D8-9C49-FEB7D3AF4C13</string>
 		</dict>
-		<key>D67953EF-7C37-40EC-9679-11D52588AEC8</key>
+		<key>E399B847-A464-410F-B7AC-402E3551C10A</key>
 		<dict>
 			<key>className</key>
 			<string>DBGConsoleLog</string>
@@ -559,7 +559,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
 			<key>fileName</key>
-			<string>D67953EF-7C37-40EC-9679-11D52588AEC8.xcactivitylog</string>
+			<string>E399B847-A464-410F-B7AC-402E3551C10A.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -576,13 +576,47 @@
 			<key>signature</key>
 			<string>Run ArchitectureTest</string>
 			<key>timeStartedRecording</key>
-			<real>648707209.152789</real>
+			<real>648749271.69506299</real>
 			<key>timeStoppedRecording</key>
-			<real>648707235.71555603</real>
+			<real>648749329.62512505</real>
 			<key>title</key>
 			<string>Run ArchitectureTest</string>
 			<key>uniqueIdentifier</key>
-			<string>D67953EF-7C37-40EC-9679-11D52588AEC8</string>
+			<string>E399B847-A464-410F-B7AC-402E3551C10A</string>
+		</dict>
+		<key>E9F7938C-D2BA-44FB-9417-1E34D3C271F6</key>
+		<dict>
+			<key>className</key>
+			<string>DBGConsoleLog</string>
+			<key>documentTypeString</key>
+			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
+			<key>fileName</key>
+			<string>E9F7938C-D2BA-44FB-9417-1E34D3C271F6.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>ArchitectureTest project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>ArchitectureTest (iOS)</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Run ArchitectureTest</string>
+			<key>timeStartedRecording</key>
+			<real>648747713.11173296</real>
+			<key>timeStoppedRecording</key>
+			<real>648747821.60538197</real>
+			<key>title</key>
+			<string>Run ArchitectureTest</string>
+			<key>uniqueIdentifier</key>
+			<string>E9F7938C-D2BA-44FB-9417-1E34D3C271F6</string>
 		</dict>
 	</dict>
 </dict>

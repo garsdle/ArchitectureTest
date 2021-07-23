@@ -5,8 +5,18 @@ struct FlightsState: Equatable {
     var sortedFlights: [Flight] = []
 }
 
+extension FlightsState {
+    init(appState: AppState) {
+        print(appState.tickets.count)
+        self.ticketCount = appState.tickets.count
+
+        self.sortedFlights = appState.flights.values.sorted(by: { $0.name > $1.name })
+    }
+}
+
 struct FlightsView: View {
-    @ScopedGet var state: FlightsState
+    @Environment(\.appStore) var appStore
+    @Scoped var state: FlightsState
 
     var body: some View {
         List {
@@ -14,31 +24,24 @@ struct FlightsView: View {
 
             ForEach(state.sortedFlights) { flight in
                 NavigationLink(flight.name,
-                               destination:
-                                FlightView(tickets: appStore.scope({ map(appState: $0, flightId: flight.id) }),
-                                           flight: appStore.scope(\.flights[flight.id], defaultValue: flight))
-                               )
+                               destination: FlightView(state: appStore.scope({ FlightState(appState: $0, flight: flight) })))
             }
-            .onDelete(perform: appStore.delete(_:))
+            .onDelete(perform: delete)
         }
         .listStyle(InsetGroupedListStyle())
         .navigationTitle("Flights")
     }
 
+    func delete(indexSet: IndexSet) {
+        guard let index = indexSet.first else { return }
 
-    
-    func map(appState: AppState, flightId: Flight.ID) -> [Ticket] {
-        appState.tickets.values
-            .filter { $0.flightId == flightId }
-            .sorted { $0.name < $1.name }
+        let flight = state.sortedFlights[index]
+        appStore.delete(flightId: flight.id)
     }
 }
 
 struct FlightsView_Previews: PreviewProvider {
     static var previews: some View {
-        ScopedGetView(FlightsState(ticketCount: 3,
-                                   sortedFlights: [])) {
-            FlightsView(state: $0)
-        }
+        FlightsView(state: appStore.scope(FlightsState.init(appState:)))
     }
 }

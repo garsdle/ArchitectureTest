@@ -6,7 +6,8 @@ let appStore = AppStore(initialState: .init())
 struct ArchitectureTestApp: App {
     var body: some Scene {
         WindowGroup {
-            MainView()
+            AppView()
+                .environment(\.appStore, AppStore(initialState: .init()))
         }
     }
 }
