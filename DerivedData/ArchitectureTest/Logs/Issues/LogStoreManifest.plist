@@ -6,7 +6,7 @@
 	<integer>10</integer>
 	<key>logs</key>
 	<dict>
-		<key>570199FA-EC29-449E-A2E9-91CF94C1AE23</key>
+		<key>BEDC69D9-BB7C-4081-8540-B1424AE4C309</key>
 		<dict>
 			<key>className</key>
 			<string>IDEActivityLogMajorGroupSection</string>
@@ -15,7 +15,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.target.product-type.application</string>
 			<key>fileName</key>
-			<string>570199FA-EC29-449E-A2E9-91CF94C1AE23.xcactivitylog</string>
+			<string>BEDC69D9-BB7C-4081-8540-B1424AE4C309.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -26,13 +26,13 @@
 			<key>signature</key>
 			<string>ArchitectureTest_(iOS)-azgjrwbgkzevizbzpbkzfojkzwsa</string>
 			<key>timeStartedRecording</key>
-			<real>648755542.26799798</real>
+			<real>649024748.314574</real>
 			<key>timeStoppedRecording</key>
-			<real>648755547.37072003</real>
+			<real>649024749.70420206</real>
 			<key>title</key>
 			<string>Build target ArchitectureTest (iOS)</string>
 			<key>uniqueIdentifier</key>
-			<string>570199FA-EC29-449E-A2E9-91CF94C1AE23</string>
+			<string>BEDC69D9-BB7C-4081-8540-B1424AE4C309</string>
 		</dict>
 	</dict>
 	<key>preserveOldLogs</key>

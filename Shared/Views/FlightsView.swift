@@ -1,30 +1,28 @@
 import SwiftUI
 
 struct FlightsState: Equatable {
-    static func == (lhs: FlightsState, rhs: FlightsState) -> Bool {
-        lhs.ticketCount == rhs.ticketCount && lhs.sortedFlights == rhs.sortedFlights
-    }
-
     let ticketCount: String
     let sortedFlights: [Flight]
+}
 
-    private let appStore: AppStore
+extension FlightsState {
+    init(appState: AppState) {
+        print(appState.tickets.count)
+        self.ticketCount = "Total Tickets: \(appState.tickets.count)"
+        self.sortedFlights = appState.flights.values.sorted(by: { $0.name > $1.name })
+    }
+}
 
-    func delete(indexSet: IndexSet) {
+struct FlightsEnvironment {
+    let flightsPublisher: AnyPublisher<[Flight], Never>
+}
+
+struct FlightsController {
+    func delete(appStore: AppStore, indexSet: IndexSet) {
         guard let index = indexSet.first else { return }
 
         let flight = sortedFlights[index]
         appStore.delete(flightId: flight.id)
-    }
-}
-
-extension FlightsState {
-    init(appStore: AppStore) {
-        self.appStore = appStore
-        print(appStore.state.tickets.count)
-        self.ticketCount = "Total Tickets: \(appStore.state.tickets.count)"
-
-        self.sortedFlights = appStore.state.flights.values.sorted(by: { $0.name > $1.name })
     }
 }
 
@@ -40,7 +38,7 @@ struct FlightsView: View {
                 NavigationLink(flight.name,
                                destination: FlightView(state: appStore.scope({ FlightState(appState: $0, flight: flight) })))
             }
-            .onDelete(perform: state.delete(indexSet:))
+            .onDelete(perform: { state.delete(appStore: appStore, indexSet: $0) })
         }
         .listStyle(InsetGroupedListStyle())
         .navigationTitle("Flights")
