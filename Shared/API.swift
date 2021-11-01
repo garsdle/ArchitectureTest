@@ -3,34 +3,30 @@ import Combine
 import Difference
 
 struct API {
-    let getNestedFlights: () -> AnyPublisher<[NestingFlight], APIError>
-    let getFlights: () -> AnyPublisher<[Flight.ID: Flight], APIError>
+    let getFlight: () -> AnyPublisher<NestingFlight?, APIError>
     let getTickets: () -> AnyPublisher<[Ticket.ID: Ticket], APIError>
-
-    let deleteFlight: (Flight.ID) -> AnyPublisher<Void, APIError>
-    let addTicket: (Ticket, Flight.ID) -> AnyPublisher<Void, APIError>
+    let addTicket: (Ticket) -> AnyPublisher<Void, APIError>
     let updateTicket: (Ticket) -> AnyPublisher<Void, APIError>
+    let deleteTicket: (Ticket.ID) -> AnyPublisher<Void, APIError>
 }
 
 extension API {
     static var mock: API {
-        API(getNestedFlights: {
-                mockPublisher(mockServer.getNestedFlights())
-            },
-            getFlights: {
-                mockPublisher(mockServer.getFlights())
+        API(
+            getFlight: {
+                mockPublisher(mockServer.getFlight())
             },
             getTickets: {
                 mockPublisher(mockServer.getTickets())
             },
-            deleteFlight: { flightId in
-                mockPublisher(mockServer.delete(flightId: flightId))
-            },
-            addTicket: { ticket, flightId in
+            addTicket: { ticket in
                 mockPublisher(mockServer.add(ticket: ticket))
             },
             updateTicket: { ticket in
                 mockPublisher(mockServer.update(ticket: ticket))
+            },
+            deleteTicket: { ticketId in
+                mockPublisher(mockServer.delete(ticketId: ticketId))
             }
         )
     }
@@ -65,28 +61,9 @@ struct Flight: Identifiable, Equatable {
     }
 }
 
-struct Ticket: Identifiable, Equatable {
-    let id: UUID
-    let flightId: Flight.ID
-    var name: String
-
-    init(id: UUID, flightId: UUID) {
-        self.id = id
-        self.flightId = flightId
-        self.name = id.uuidString
-    }
-
-    static var mock: Ticket {
-        Ticket(id: .init(), flightId: .init())
-    }
-}
-
 class MockServer {
-    var flights = [Flight.ID: Flight]() {
-        didSet {
-//            print(dumpDiff(oldValue, flights))
-        }
-    }
+    let flightId = UUID()
+
     var tickets = [Ticket.ID: Ticket]() {
         didSet {
 //            print(dumpDiff(oldValue, tickets))
@@ -94,44 +71,18 @@ class MockServer {
     }
 
     init() {
-        for _ in 0..<2 {
-            let flight = Flight(id: .init())
-            flights[flight.id] = flight
-
-            for _ in 0..<2 {
-                let ticket = Ticket(id: .init(), flightId: flight.id)
-                tickets[ticket.id] = ticket
-            }
+        for _ in 0..<8 {
+            let ticket = Ticket(id: .init(), flightId: flightId)
+            tickets[ticket.id] = ticket
         }
     }
 
-    func getFlights() -> [Flight.ID: Flight] {
-        flights
+    func getFlight() -> NestingFlight? {
+        NestingFlight(id: flightId, tickets: Array(tickets.values))
     }
 
     func getTickets() -> [Ticket.ID: Ticket] {
         tickets
-    }
-
-    func getNestedFlights() -> [NestingFlight] {
-        var nestingFlights = [NestingFlight.ID: NestingFlight]()
-        flights.forEach { id, flight in
-            nestingFlights[id] = NestingFlight(id: id, tickets: [])
-        }
-
-        tickets.forEach { id, ticket in
-            nestingFlights[ticket.flightId]?.tickets.append(ticket)
-        }
-
-        return Array(nestingFlights.values)
-    }
-
-    func delete(flightId: Flight.ID) {
-        tickets = tickets.filter { ticketPair in
-            ticketPair.value.flightId != flightId
-        }
-        flights.removeValue(forKey: flightId)
-//        print("􀪹 Deleted flight")
     }
 
     func add(ticket: Ticket) {
@@ -142,6 +93,10 @@ class MockServer {
     func update(ticket: Ticket) {
         tickets[ticket.id] = ticket
 //        print("􀪹 Updated ticket")
+    }
+
+    func delete(ticketId: Ticket.ID) {
+        tickets.removeValue(forKey: ticketId)
     }
 }
 

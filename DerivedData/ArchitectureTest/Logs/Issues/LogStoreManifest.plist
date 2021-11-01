@@ -6,7 +6,35 @@
 	<integer>10</integer>
 	<key>logs</key>
 	<dict>
-		<key>BEDC69D9-BB7C-4081-8540-B1424AE4C309</key>
+		<key>03097826-F785-4C39-A5C9-F4137E9FB5BA</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogMajorGroupSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.target.product-type.target</string>
+			<key>fileName</key>
+			<string>03097826-F785-4C39-A5C9-F4137E9FB5BA.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+			</dict>
+			<key>signature</key>
+			<string>Difference-aowlkewaibfvtzclieladtpzaudh</string>
+			<key>timeStartedRecording</key>
+			<real>657404318.47695899</real>
+			<key>timeStoppedRecording</key>
+			<real>657404320.50211096</real>
+			<key>title</key>
+			<string>Build target Difference</string>
+			<key>uniqueIdentifier</key>
+			<string>03097826-F785-4C39-A5C9-F4137E9FB5BA</string>
+		</dict>
+		<key>CF751E42-F194-48EB-AE38-5571366C7C3E</key>
 		<dict>
 			<key>className</key>
 			<string>IDEActivityLogMajorGroupSection</string>
@@ -15,7 +43,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.target.product-type.application</string>
 			<key>fileName</key>
-			<string>BEDC69D9-BB7C-4081-8540-B1424AE4C309.xcactivitylog</string>
+			<string>CF751E42-F194-48EB-AE38-5571366C7C3E.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -26,13 +54,13 @@
 			<key>signature</key>
 			<string>ArchitectureTest_(iOS)-azgjrwbgkzevizbzpbkzfojkzwsa</string>
 			<key>timeStartedRecording</key>
-			<real>649024748.314574</real>
+			<real>657434045.632828</real>
 			<key>timeStoppedRecording</key>
-			<real>649024749.70420206</real>
+			<real>657434046.49656999</real>
 			<key>title</key>
 			<string>Build target ArchitectureTest (iOS)</string>
 			<key>uniqueIdentifier</key>
-			<string>BEDC69D9-BB7C-4081-8540-B1424AE4C309</string>
+			<string>CF751E42-F194-48EB-AE38-5571366C7C3E</string>
 		</dict>
 	</dict>
 	<key>preserveOldLogs</key>
