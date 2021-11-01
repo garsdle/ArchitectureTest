@@ -17,11 +17,15 @@ class FlightService: ObservableObject {
             .assign(to: &$flight)
     }
 
+    func publisher(ticketId: Ticket.ID) -> AnyPublisher<Ticket?, Never> {
+        $flight
+            .map(\.?.tickets[ticketId])
+            .eraseToAnyPublisher()
+    }
+
     func ticketsByName() -> AnyPublisher<[Ticket], Never> {
-        $flight.compactMap(\.?.tickets)
-            .map {
-                $0.sorted { $0.name > $1.name }
-            }
+        $flight.compactMap(\.?.tickets.values)
+            .map { $0.sorted { $0.name < $1.name } }
             .eraseToAnyPublisher()
     }
 
@@ -30,7 +34,7 @@ class FlightService: ObservableObject {
     }
 
     func delete(_ ticketId: Ticket.ID) {
-        flight?.tickets.removeAll { $0.id == ticketId }
+        flight?.tickets.removeValue(forKey: ticketId)
 
         api.deleteTicket(ticketId)
             .replaceError(with: ())
@@ -40,9 +44,24 @@ class FlightService: ObservableObject {
 
     func addTicket(flightId: Flight.ID) {
         let newTicket = Ticket(id: uuidGenerator(), flightId: flightId)
-        flight?.tickets.append(newTicket)
+        flight?.tickets[newTicket.id] = newTicket
         
         api.addTicket(newTicket)
+            .sink { completion in
+                print(completion)
+            } receiveValue: {
+
+            }
+            .store(in: &cancellables)
+    }
+
+    func update(name: String, ticketId: Ticket.ID) {
+        guard var ticket = self.flight?.tickets[ticketId] else {
+            return
+        }
+        ticket.name = name
+        self.flight?.tickets[ticketId] = ticket
+        api.updateTicket(ticket)
             .sink { completion in
                 print(completion)
             } receiveValue: {

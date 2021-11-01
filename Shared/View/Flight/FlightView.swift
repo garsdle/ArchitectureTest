@@ -1,14 +1,14 @@
 import SwiftUI
 import Combine
 
-struct FlightScreen: View {
+struct FlightView: View {
     let flightName: String
     let tickets: [Ticket]
     let onSelectTicket: (Ticket) -> Void
     let onDelete: (Ticket) -> Void
     let onAddTicket: () -> Void
     let onSwitchToAircraft: () -> Void
-
+    
     var body: some View {
         List {
             ForEach(tickets) { ticket in
@@ -31,12 +31,23 @@ struct FlightScreen: View {
         }
         .navigationTitle("Ticket View")
     }
-
+    
     struct TicketRow: View {
         let name: String
-
+        
         var body: some View {
             Text(name)
         }
+    }
+}
+
+struct FlightView_Previews: PreviewProvider {
+    static var previews: some View {
+        FlightView(flightName: "Test",
+                   tickets: [.mock],
+                   onSelectTicket: { _ in },
+                   onDelete: { _ in },
+                   onAddTicket: { },
+                   onSwitchToAircraft: {})
     }
 }

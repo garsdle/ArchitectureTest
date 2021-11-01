@@ -45,10 +45,16 @@ enum APIError: Error { }
 struct NestingFlight: Identifiable, Equatable {
     let id: UUID
     var name: String { id.uuidString }
-    var tickets: [Ticket]
+    var tickets: [Ticket.ID: Ticket]
 
     static var mock: NestingFlight {
-        NestingFlight(id: .init(), tickets: [.mock, .mock])
+        let flightId = UUID()
+        var tickets: [Ticket.ID: Ticket] = [:]
+        for _ in 0..<8 {
+            let ticket = Ticket(id: .init(), flightId: flightId)
+            tickets[ticket.id] = ticket
+        }
+        return NestingFlight(id: .init(), tickets: tickets)
     }
 }
 
@@ -62,41 +68,28 @@ struct Flight: Identifiable, Equatable {
 }
 
 class MockServer {
-    let flightId = UUID()
-
-    var tickets = [Ticket.ID: Ticket]() {
-        didSet {
-//            print(dumpDiff(oldValue, tickets))
-        }
-    }
-
-    init() {
-        for _ in 0..<8 {
-            let ticket = Ticket(id: .init(), flightId: flightId)
-            tickets[ticket.id] = ticket
-        }
-    }
+    var flight = NestingFlight.mock
 
     func getFlight() -> NestingFlight? {
-        NestingFlight(id: flightId, tickets: Array(tickets.values))
+        flight
     }
 
     func getTickets() -> [Ticket.ID: Ticket] {
-        tickets
+        flight.tickets
     }
 
     func add(ticket: Ticket) {
-        tickets[ticket.id] = ticket
+        flight.tickets[ticket.id] = ticket
 //        print("􀪹 Added ticket")
     }
 
     func update(ticket: Ticket) {
-        tickets[ticket.id] = ticket
+        flight.tickets[ticket.id] = ticket
 //        print("􀪹 Updated ticket")
     }
 
     func delete(ticketId: Ticket.ID) {
-        tickets.removeValue(forKey: ticketId)
+        flight.tickets.removeValue(forKey: ticketId)
     }
 }
 

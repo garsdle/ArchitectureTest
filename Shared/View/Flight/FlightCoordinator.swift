@@ -18,19 +18,20 @@ class FlightCoordinator: ObservableObject {
     func openLoader() {
         flow.replaceNFlow(with: [
             .loading(.init(onFlightLoaded: open(flight:),
-                                     flightService: current.flightService))
+                           flightService: current.flightService))
         ])
     }
 
     func open(flight: NestingFlight) {
         flow.replaceNFlow(with: [
-            .flight(FlightViewModel(flightService: current.flightService,
-                            flight: flight))
+            .flight(FlightViewModel(flight: flight,
+                                    flightService: current.flightService))
         ])
     }
 
     func open(ticket: Ticket) {
-        flow.push(.detail(TicketViewModel(ticket: ticket)))
+        flow.push(.detail(TicketViewModel(ticket: ticket,
+                                          flightService: current.flightService)))
     }
 }
 
@@ -55,16 +56,17 @@ struct FlightCoordinatorView: View {
                     }
                 case .flight(let viewModel):
                     WithViewModel(viewModel) { viewModel in
-                        FlightScreen(flightName: viewModel.flightName,
-                                     tickets: viewModel.tickets,
-                                     onSelectTicket: coordinator.open(ticket:),
-                                     onDelete: viewModel.delete,
-                                     onAddTicket: viewModel.addTicket,
-                                     onSwitchToAircraft: coordinator.switchToAircraft)
+                        FlightView(flightName: viewModel.flightName,
+                                   tickets: viewModel.tickets,
+                                   onSelectTicket: coordinator.open(ticket:),
+                                   onDelete: viewModel.delete,
+                                   onAddTicket: viewModel.addTicket,
+                                   onSwitchToAircraft: coordinator.switchToAircraft)
                     }
                 case .detail(let viewModel):
                     WithViewModel(viewModel) { viewModel in
-                        TicketView(name: viewModel.ticket.name)
+                        TicketView(name: Binding(get: { viewModel.name },
+                                                 set: { viewModel.name = $0}))
                     }
                 }
             }
@@ -93,22 +95,21 @@ class LoadingViewModel: ObservableObject {
 
 class FlightViewModel: ObservableObject {
     @Published private(set) var flightName: String
-    @Published private(set) var tickets: [Ticket]
+    @Published private(set) var tickets: [Ticket] = []
 
     private let flightId: Flight.ID
     private let flightService: FlightService
 
-    init(flightService: FlightService, flight: NestingFlight) {
-        self.flightService = flightService
+    init(flight: NestingFlight, flightService: FlightService) {
         self.flightName = flight.name
-        self.tickets = flight.tickets
         self.flightId = flight.id
+        self.flightService = flightService
 
         flightService.$flight
             .compactMap(\.?.name)
             .assign(to: &$flightName)
-        flightService.$flight
-            .compactMap(\.?.tickets)
+
+        flightService.ticketsByName()
             .assign(to: &$tickets)
     }
 
@@ -118,5 +119,34 @@ class FlightViewModel: ObservableObject {
 
     func addTicket() {
         flightService.addTicket(flightId: flightId)
+    }
+}
+
+class TicketViewModel: ObservableObject {
+    @Published var name: String
+
+    private let ticketId: Ticket.ID
+    private let flightService: FlightService
+    private var cancellables = Set<AnyCancellable>()
+
+    init(ticket: Ticket, flightService: FlightService) {
+        self.name = ticket.name
+        self.ticketId = ticket.id
+        self.flightService = flightService
+
+        flightService.publisher(ticketId: ticket.id)
+            .removeDuplicates()
+            .compactMap { $0?.name }
+            .assign(to: &$name)
+
+        $name
+            .removeDuplicates()
+            .debounce(for: .seconds(1), scheduler: DispatchQueue.main)
+            .sink(receiveValue: update(name:))
+            .store(in: &cancellables)
+    }
+
+    func update(name: String) {
+        flightService.update(name: name, ticketId: ticketId)
     }
 }
