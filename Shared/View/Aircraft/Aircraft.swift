@@ -1,15 +1,12 @@
 import SwiftUI
 
 class AircraftCoordinator: ObservableObject {
-    let aircraftViewModel: AircraftViewModel
     let switchToFlight: () -> Void
-
     let environment: AppEnvironment
     
     init(switchToFlight: @escaping () -> Void, environment: AppEnvironment) {
         self.environment = environment
         self.switchToFlight = switchToFlight
-        self.aircraftViewModel = AircraftViewModel(flightController: environment.flightController)
     }
 }
 
@@ -18,23 +15,22 @@ struct AircraftCoordinatorView: View {
 
     var body: some View {
         NavigationView {
-
-            WithViewModel(coordinator.aircraftViewModel) { viewModel in
-                AircraftView(ticketCount: viewModel.ticketCount,
+            WithAnyPublisher(coordinator.environment.flightController.guestCount(), initialValue: 0) { value in
+                AircraftView(ticketCount: value,
                              onSwitchToFlight: coordinator.switchToFlight)
             }
         }
     }
 }
 
-class AircraftViewModel: ObservableObject {
-    @Published var ticketCount: Int = 0
-
-    init(flightController: FlightController) {
-        flightController.guestCount()
-            .assign(to: &$ticketCount)
-    }
-}
+//class AircraftViewModel: ObservableObject {
+//    @Published var ticketCount: Int = 0
+//
+//    init(flightController: FlightController) {
+//        flightController.guestCount()
+//            .assign(to: &$ticketCount)
+//    }
+//}
 
 struct AircraftView: View {
     let ticketCount: Int

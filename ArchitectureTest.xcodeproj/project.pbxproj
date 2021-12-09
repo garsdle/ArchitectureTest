@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F3AD0272761D3FC00CB6B31 /* WithAnyPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3AD0262761D3FC00CB6B31 /* WithAnyPublisher.swift */; };
+		3F3AD0282761D3FC00CB6B31 /* WithAnyPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3AD0262761D3FC00CB6B31 /* WithAnyPublisher.swift */; };
+		3F3AD02A2761DB1B00CB6B31 /* Combine+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3AD0292761DB1B00CB6B31 /* Combine+.swift */; };
+		3F3AD02B2761DB1B00CB6B31 /* Combine+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3AD0292761DB1B00CB6B31 /* Combine+.swift */; };
 		6F2664A9272F335B007AF6BE /* TicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2664A8272F335B007AF6BE /* TicketView.swift */; };
 		6F2664AA272F335B007AF6BE /* TicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2664A8272F335B007AF6BE /* TicketView.swift */; };
 		6F2664AC272F3381007AF6BE /* FlightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2664AB272F3381007AF6BE /* FlightView.swift */; };
@@ -25,8 +29,8 @@
 		6F5A25D62630D59300A81E56 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5A25C12630D59100A81E56 /* MainCoordinator.swift */; };
 		6F5A25D72630D59300A81E56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F5A25C22630D59200A81E56 /* Assets.xcassets */; };
 		6F5A25D82630D59300A81E56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F5A25C22630D59200A81E56 /* Assets.xcassets */; };
-		6FB89782268245F000C86912 /* ScopedState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB89781268245F000C86912 /* ScopedState.swift */; };
-		6FB89783268245F000C86912 /* ScopedState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB89781268245F000C86912 /* ScopedState.swift */; };
+		6FB89782268245F000C86912 /* WithViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB89781268245F000C86912 /* WithViewModel.swift */; };
+		6FB89783268245F000C86912 /* WithViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB89781268245F000C86912 /* WithViewModel.swift */; };
 		6FB897862682759200C86912 /* Difference in Frameworks */ = {isa = PBXBuildFile; productRef = 6FB897852682759200C86912 /* Difference */; };
 		6FC3D50E2644805400D8A5DE /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC3D50D2644805400D8A5DE /* API.swift */; };
 		6FC3D50F2644805400D8A5DE /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC3D50D2644805400D8A5DE /* API.swift */; };
@@ -51,6 +55,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3F3AD0262761D3FC00CB6B31 /* WithAnyPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithAnyPublisher.swift; sourceTree = "<group>"; };
+		3F3AD0292761DB1B00CB6B31 /* Combine+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Combine+.swift"; sourceTree = "<group>"; };
 		6F2664A8272F335B007AF6BE /* TicketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketView.swift; sourceTree = "<group>"; };
 		6F2664AB272F3381007AF6BE /* FlightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightView.swift; sourceTree = "<group>"; };
 		6F2664B1272F3706007AF6BE /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
@@ -65,7 +71,7 @@
 		6F5A25CF2630D59300A81E56 /* ArchitectureTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArchitectureTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F5A25D12630D59300A81E56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6F5A25D22630D59300A81E56 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
-		6FB89781268245F000C86912 /* ScopedState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScopedState.swift; sourceTree = "<group>"; };
+		6FB89781268245F000C86912 /* WithViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithViewModel.swift; sourceTree = "<group>"; };
 		6FC3D50D2644805400D8A5DE /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		6FE19DCC2712836100068452 /* NStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NStack.swift; sourceTree = "<group>"; };
 		6FE19DCD2712836100068452 /* NFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NFlow.swift; sourceTree = "<group>"; };
@@ -140,7 +146,9 @@
 			isa = PBXGroup;
 			children = (
 				6F55233126444E5B00C2E3BF /* IndexedCollection.swift */,
-				6FB89781268245F000C86912 /* ScopedState.swift */,
+				6FB89781268245F000C86912 /* WithViewModel.swift */,
+				3F3AD0262761D3FC00CB6B31 /* WithAnyPublisher.swift */,
+				3F3AD0292761DB1B00CB6B31 /* Combine+.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -327,7 +335,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6FB89782268245F000C86912 /* ScopedState.swift in Sources */,
+				6FB89782268245F000C86912 /* WithViewModel.swift in Sources */,
+				3F3AD02A2761DB1B00CB6B31 /* Combine+.swift in Sources */,
 				6FE19DDE2712836100068452 /* PStack.swift in Sources */,
 				6F5A25D52630D59300A81E56 /* MainCoordinator.swift in Sources */,
 				6F3FA4952728F8FD00B28286 /* FlightController.swift in Sources */,
@@ -342,6 +351,7 @@
 				6FE19DE72715224300068452 /* FlightCoordinator.swift in Sources */,
 				6F5523352644572200C2E3BF /* AppEnvironment.swift in Sources */,
 				6F2664A9272F335B007AF6BE /* TicketView.swift in Sources */,
+				3F3AD0272761D3FC00CB6B31 /* WithAnyPublisher.swift in Sources */,
 				6FC3D50E2644805400D8A5DE /* API.swift in Sources */,
 				6FE19DDC2712836100068452 /* PFlow.swift in Sources */,
 				6FE19DE02712836100068452 /* PresentationOptions.swift in Sources */,
@@ -353,7 +363,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6FB89783268245F000C86912 /* ScopedState.swift in Sources */,
+				6FB89783268245F000C86912 /* WithViewModel.swift in Sources */,
+				3F3AD02B2761DB1B00CB6B31 /* Combine+.swift in Sources */,
 				6FE19DDF2712836100068452 /* PStack.swift in Sources */,
 				6F5A25D62630D59300A81E56 /* MainCoordinator.swift in Sources */,
 				6F3FA4962728F8FD00B28286 /* FlightController.swift in Sources */,
@@ -368,6 +379,7 @@
 				6FE19DE82715224300068452 /* FlightCoordinator.swift in Sources */,
 				6F5523362644572200C2E3BF /* AppEnvironment.swift in Sources */,
 				6F2664AA272F335B007AF6BE /* TicketView.swift in Sources */,
+				3F3AD0282761D3FC00CB6B31 /* WithAnyPublisher.swift in Sources */,
 				6FC3D50F2644805400D8A5DE /* API.swift in Sources */,
 				6FE19DDD2712836100068452 /* PFlow.swift in Sources */,
 				6FE19DE12712836100068452 /* PresentationOptions.swift in Sources */,
