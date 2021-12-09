@@ -17,9 +17,7 @@ class MainCoordinator: ObservableObject {
     func presentFlight() {
         screen = .flight(.init(switchToAircraft: presentAircraft, environment: environment))
     }
-}
 
-extension MainCoordinator {
     enum Screen {
         case flight(FlightCoordinator)
         case aircraft(AircraftCoordinator)
@@ -27,7 +25,7 @@ extension MainCoordinator {
 }
 
 struct MainCoordinatorView: View {
-    @StateObject var coordinator = MainCoordinator(environment: .mock)
+    @StateObject var coordinator: MainCoordinator
 
     var body: some View {
         switch coordinator.screen! {
@@ -41,6 +39,6 @@ struct MainCoordinatorView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        MainCoordinatorView(coordinator: .init(environment: .mock))
+        MainCoordinatorView(coordinator: MainCoordinator(environment: .mock))
     }
 }
