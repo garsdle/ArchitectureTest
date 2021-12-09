@@ -3,17 +3,19 @@ import Combine
 
 class MainCoordinator: ObservableObject {
     @Published var screen: Screen!
+    private let environment: AppEnvironment
 
-    init() {
+    init(environment: AppEnvironment) {
+        self.environment = environment
         presentFlight()
     }
 
     func presentAircraft() {
-        screen = .aircraft(.init(switchToFlight: presentFlight))
+        screen = .aircraft(.init(switchToFlight: presentFlight, environment: environment))
     }
 
     func presentFlight() {
-        screen = .flight(.init(switchToAircraft: presentAircraft))
+        screen = .flight(.init(switchToAircraft: presentAircraft, environment: environment))
     }
 }
 
@@ -25,7 +27,7 @@ extension MainCoordinator {
 }
 
 struct MainCoordinatorView: View {
-    @StateObject var coordinator = MainCoordinator()
+    @StateObject var coordinator = MainCoordinator(environment: .mock)
 
     var body: some View {
         switch coordinator.screen! {
@@ -39,6 +41,6 @@ struct MainCoordinatorView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        MainCoordinatorView(coordinator: .init())
+        MainCoordinatorView(coordinator: .init(environment: .mock))
     }
 }

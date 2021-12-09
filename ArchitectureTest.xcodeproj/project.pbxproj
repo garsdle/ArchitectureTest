@@ -13,8 +13,8 @@
 		6F2664AD272F3381007AF6BE /* FlightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2664AB272F3381007AF6BE /* FlightView.swift */; };
 		6F2664B2272F3706007AF6BE /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2664B1272F3706007AF6BE /* Ticket.swift */; };
 		6F2664B3272F3706007AF6BE /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2664B1272F3706007AF6BE /* Ticket.swift */; };
-		6F3FA4952728F8FD00B28286 /* TicketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3FA4942728F8FD00B28286 /* TicketService.swift */; };
-		6F3FA4962728F8FD00B28286 /* TicketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3FA4942728F8FD00B28286 /* TicketService.swift */; };
+		6F3FA4952728F8FD00B28286 /* FlightController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3FA4942728F8FD00B28286 /* FlightController.swift */; };
+		6F3FA4962728F8FD00B28286 /* FlightController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3FA4942728F8FD00B28286 /* FlightController.swift */; };
 		6F55233226444E5B00C2E3BF /* IndexedCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F55233126444E5B00C2E3BF /* IndexedCollection.swift */; };
 		6F55233326444E5B00C2E3BF /* IndexedCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F55233126444E5B00C2E3BF /* IndexedCollection.swift */; };
 		6F5523352644572200C2E3BF /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5523342644572200C2E3BF /* AppEnvironment.swift */; };
@@ -54,7 +54,7 @@
 		6F2664A8272F335B007AF6BE /* TicketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketView.swift; sourceTree = "<group>"; };
 		6F2664AB272F3381007AF6BE /* FlightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightView.swift; sourceTree = "<group>"; };
 		6F2664B1272F3706007AF6BE /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
-		6F3FA4942728F8FD00B28286 /* TicketService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketService.swift; sourceTree = "<group>"; };
+		6F3FA4942728F8FD00B28286 /* FlightController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightController.swift; sourceTree = "<group>"; };
 		6F55233126444E5B00C2E3BF /* IndexedCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexedCollection.swift; sourceTree = "<group>"; };
 		6F5523342644572200C2E3BF /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
 		6F5A25C02630D59100A81E56 /* ArchitectureTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchitectureTestApp.swift; sourceTree = "<group>"; };
@@ -130,7 +130,7 @@
 		6F2664B0272F36E7007AF6BE /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				6F3FA4942728F8FD00B28286 /* TicketService.swift */,
+				6F3FA4942728F8FD00B28286 /* FlightController.swift */,
 				6F2664B1272F3706007AF6BE /* Ticket.swift */,
 			);
 			path = Domain;
@@ -330,7 +330,7 @@
 				6FB89782268245F000C86912 /* ScopedState.swift in Sources */,
 				6FE19DDE2712836100068452 /* PStack.swift in Sources */,
 				6F5A25D52630D59300A81E56 /* MainCoordinator.swift in Sources */,
-				6F3FA4952728F8FD00B28286 /* TicketService.swift in Sources */,
+				6F3FA4952728F8FD00B28286 /* FlightController.swift in Sources */,
 				6F2664AC272F3381007AF6BE /* FlightView.swift in Sources */,
 				6F55233226444E5B00C2E3BF /* IndexedCollection.swift in Sources */,
 				6FE19DD62712836100068452 /* NFlow.swift in Sources */,
@@ -356,7 +356,7 @@
 				6FB89783268245F000C86912 /* ScopedState.swift in Sources */,
 				6FE19DDF2712836100068452 /* PStack.swift in Sources */,
 				6F5A25D62630D59300A81E56 /* MainCoordinator.swift in Sources */,
-				6F3FA4962728F8FD00B28286 /* TicketService.swift in Sources */,
+				6F3FA4962728F8FD00B28286 /* FlightController.swift in Sources */,
 				6F2664AD272F3381007AF6BE /* FlightView.swift in Sources */,
 				6F55233326444E5B00C2E3BF /* IndexedCollection.swift in Sources */,
 				6FE19DD72712836100068452 /* NFlow.swift in Sources */,

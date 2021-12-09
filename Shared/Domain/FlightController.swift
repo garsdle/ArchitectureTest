@@ -1,7 +1,7 @@
 import Foundation
 import Combine
 
-class FlightService: ObservableObject {
+class FlightController {
     @Published private(set) var flight: NestingFlight?
 
     private let api: API

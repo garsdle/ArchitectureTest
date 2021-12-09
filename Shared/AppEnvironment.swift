@@ -1,13 +1,11 @@
 import Foundation
 
-let current = AppEnvironment.mock
-
 struct AppEnvironment {
-    let flightService: FlightService
+    let flightController: FlightController
 
     static var mock: AppEnvironment {
         let api = API.mock
         let uuidGenerator: () -> UUID = UUID.init
-        return AppEnvironment(flightService: .init(api: api, uuidGenerator: uuidGenerator))
+        return AppEnvironment(flightController: .init(api: api, uuidGenerator: uuidGenerator))
     }
 }

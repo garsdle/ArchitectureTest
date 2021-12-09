@@ -5,10 +5,13 @@ class FlightCoordinator: ObservableObject {
     @Published var flow = NFlow<Screen>()
     let switchToAircraft: () -> Void
 
-    init(switchToAircraft: @escaping () -> Void) {
+    private let environment: AppEnvironment
+    
+    init(switchToAircraft: @escaping () -> Void, environment: AppEnvironment) {
         self.switchToAircraft = switchToAircraft
-
-        if let flight = current.flightService.flight {
+        self.environment = environment
+        
+        if let flight = environment.flightController.flight {
             open(flight: flight)
         } else {
             self.openLoader()
@@ -18,20 +21,20 @@ class FlightCoordinator: ObservableObject {
     func openLoader() {
         flow.replaceNFlow(with: [
             .loading(.init(onFlightLoaded: open(flight:),
-                           flightService: current.flightService))
+                           flightController: environment.flightController))
         ])
     }
 
     func open(flight: NestingFlight) {
         flow.replaceNFlow(with: [
             .flight(FlightViewModel(flight: flight,
-                                    flightService: current.flightService))
+                                    flightController: environment.flightController))
         ])
     }
 
     func open(ticket: Ticket) {
         flow.push(.detail(TicketViewModel(ticket: ticket,
-                                          flightService: current.flightService)))
+                                          flightController: environment.flightController)))
     }
 }
 
@@ -79,10 +82,10 @@ class LoadingViewModel: ObservableObject {
 
     private var cancellables = Set<AnyCancellable>()
 
-    init(onFlightLoaded: @escaping (NestingFlight) -> Void, flightService: FlightService) {
+    init(onFlightLoaded: @escaping (NestingFlight) -> Void, flightController: FlightController) {
         self.onFlightLoaded = onFlightLoaded
         
-        flightService.$flight
+        flightController.$flight
             .delay(for: 0.1, scheduler: DispatchQueue.main)
             .removeDuplicates()
             .compactMap { $0 }
@@ -98,27 +101,27 @@ class FlightViewModel: ObservableObject {
     @Published private(set) var tickets: [Ticket] = []
 
     private let flightId: Flight.ID
-    private let flightService: FlightService
+    private let flightController: FlightController
 
-    init(flight: NestingFlight, flightService: FlightService) {
+    init(flight: NestingFlight, flightController: FlightController) {
         self.flightName = flight.name
         self.flightId = flight.id
-        self.flightService = flightService
+        self.flightController = flightController
 
-        flightService.$flight
+        flightController.$flight
             .compactMap(\.?.name)
             .assign(to: &$flightName)
 
-        flightService.ticketsByName()
+        flightController.ticketsByName()
             .assign(to: &$tickets)
     }
 
     func delete(_ ticket: Ticket) {
-        flightService.delete(ticket.id)
+        flightController.delete(ticket.id)
     }
 
     func addTicket() {
-        flightService.addTicket(flightId: flightId)
+        flightController.addTicket(flightId: flightId)
     }
 }
 
@@ -126,15 +129,15 @@ class TicketViewModel: ObservableObject {
     @Published var name: String
 
     private let ticketId: Ticket.ID
-    private let flightService: FlightService
+    private let flightController: FlightController
     private var cancellables = Set<AnyCancellable>()
 
-    init(ticket: Ticket, flightService: FlightService) {
+    init(ticket: Ticket, flightController: FlightController) {
         self.name = ticket.name
         self.ticketId = ticket.id
-        self.flightService = flightService
+        self.flightController = flightController
 
-        flightService.publisher(ticketId: ticket.id)
+        flightController.publisher(ticketId: ticket.id)
             .removeDuplicates()
             .compactMap { $0?.name }
             .assign(to: &$name)
@@ -147,6 +150,6 @@ class TicketViewModel: ObservableObject {
     }
 
     func update(name: String) {
-        flightService.update(name: name, ticketId: ticketId)
+        flightController.update(name: name, ticketId: ticketId)
     }
 }
