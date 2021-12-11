@@ -23,15 +23,6 @@ struct AircraftCoordinatorView: View {
     }
 }
 
-//class AircraftViewModel: ObservableObject {
-//    @Published var ticketCount: Int = 0
-//
-//    init(flightController: FlightController) {
-//        flightController.guestCount()
-//            .assign(to: &$ticketCount)
-//    }
-//}
-
 struct AircraftView: View {
     let ticketCount: Int
     let onSwitchToFlight: () -> Void

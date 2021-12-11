@@ -2,56 +2,31 @@ import SwiftUI
 import Combine
 
 class FlightCoordinator: ObservableObject {
-    @Published var flow = NFlow<Screen>()
+    @Published var flightViewModel: FlightViewModel?
+    @Published var ticketViewModel: TicketViewModel?
+    var loadingViewModel: LoadingViewModel!
     let switchToAircraft: () -> Void
 
-    let environment: AppEnvironment
-    var cancellables = Set<AnyCancellable>()
+    private let environment: AppEnvironment
     
     init(switchToAircraft: @escaping () -> Void, environment: AppEnvironment) {
         self.switchToAircraft = switchToAircraft
         self.environment = environment
         
+        self.loadingViewModel = LoadingViewModel(onFlightLoaded: open(flight:),
+                                                 flightController: environment.flightController)
+        
         if let flight = environment.flightController.flight {
             open(flight: flight)
-        } else {
-            self.openLoader()
         }
     }
-
-    func openLoader() {
-        flow.replaceNFlow(with: [
-            .loading(LoadingViewModel(onFlightLoaded: open(flight:),
-                                      flightController: environment.flightController))
-        ])
-    }
-
     func open(flight: NestingFlight) {
-        let defaultVM = FlightViewModel(nestingFlight: flight, tickets: [])
-        let valueSubject = CurrentValueSubject<FlightViewModel, Never>(defaultVM)
-        environment.flightController.$flight
-            .map { $0 ?? flight }
-            .combineLatest(environment.flightController.ticketsByName())
-            .compactMap(FlightViewModel.init)
-            .assign(to: \.value, on: valueSubject)
-            .store(in: &cancellables)
-        
-        flow.replaceNFlow(with: [
-            .flight(valueSubject)
-        ])
+        self.flightViewModel = FlightViewModel(flight: flight, flightController: environment.flightController)
     }
 
     func open(ticket: Ticket) {
-        flow.push(.detail(TicketViewModel(ticket: ticket,
-                                          flightController: environment.flightController)))
-    }
-}
-
-extension FlightCoordinator {
-    enum Screen {
-        case loading(LoadingViewModel)
-        case flight(CurrentValueSubject<FlightViewModel, Never>)
-        case detail(TicketViewModel)
+        self.ticketViewModel = TicketViewModel(ticket: ticket,
+                                              flightController: environment.flightController)
     }
 }
 
@@ -60,26 +35,23 @@ struct FlightCoordinatorView: View {
 
     var body: some View  {
         NavigationView {
-            NStack($coordinator.flow) { screen in
-                switch screen {
-                case  .loading(let viewModel):
-                    WithViewModel(viewModel) { viewModel in
-                        ProgressView()
+            if let flightViewModel = coordinator.flightViewModel {
+                WithViewModel(flightViewModel) { vm in
+                    FlightView(flightName: vm.flightName,
+                               tickets: vm.tickets,
+                               onSelectTicket: coordinator.open(ticket:),
+                               onDelete: flightViewModel.delete,
+                               onAddTicket: flightViewModel.addTicket,
+                               onSwitchToAircraft: coordinator.switchToAircraft)
+                }
+                .navigation(item: $coordinator.ticketViewModel) { $ticketViewModel in
+                    WithViewModel(ticketViewModel) { viewModel in
+                        TicketView(name: $ticketViewModel.name)
                     }
-                case .flight(let viewModel):
-                    WithValueSubject(viewModel) { vm in
-                        FlightView(flightName: vm.flightName,
-                                   tickets: vm.tickets,
-                                   onSelectTicket: coordinator.open(ticket:),
-                                   onDelete: { coordinator.environment.flightController.delete($0.id) },
-                                   onAddTicket: { coordinator.environment.flightController.addTicket(flightId: vm.flightId) },
-                                   onSwitchToAircraft: coordinator.switchToAircraft)
-                    }
-                case .detail(let viewModel):
-                    WithViewModel(viewModel) { viewModel in
-                        TicketView(name: Binding(get: { viewModel.name },
-                                                 set: { viewModel.name = $0}))
-                    }
+                }
+            } else {
+                WithViewModel(coordinator.loadingViewModel) { viewModel in
+                    ProgressView()
                 }
             }
         }
@@ -105,46 +77,34 @@ class LoadingViewModel: ObservableObject {
     }
 }
 
-struct FlightViewModel {
-    let flightId: Flight.ID
-    let flightName: String
-    let tickets: [Ticket]
-    
-    init(nestingFlight: NestingFlight, tickets: [Ticket]) {
-        self.flightId = nestingFlight.id
-        self.flightName = nestingFlight.name
-        self.tickets = tickets
+class FlightViewModel: ObservableObject {
+    @Published private(set) var flightName: String
+    @Published private(set) var tickets: [Ticket] = []
+
+    private let flightId: Flight.ID
+    private let flightController: FlightController
+
+    init(flight: NestingFlight, flightController: FlightController) {
+        self.flightName = flight.name
+        self.flightId = flight.id
+        self.flightController = flightController
+
+        flightController.$flight
+            .compactMap(\.?.name)
+            .assign(to: &$flightName)
+
+        flightController.ticketsByName()
+            .assign(to: &$tickets)
+    }
+
+    func delete(_ ticket: Ticket) {
+        flightController.delete(ticket.id)
+    }
+
+    func addTicket() {
+        flightController.addTicket(flightId: flightId)
     }
 }
-
-//class FlightViewModel: ObservableObject {
-//    @Published private(set) var flightName: String
-//    @Published private(set) var tickets: [Ticket] = []
-//
-//    private let flightId: Flight.ID
-//    private let flightController: FlightController
-//
-//    init(flight: NestingFlight, flightController: FlightController) {
-//        self.flightName = flight.name
-//        self.flightId = flight.id
-//        self.flightController = flightController
-//
-//        flightController.$flight
-//            .compactMap(\.?.name)
-//            .assign(to: &$flightName)
-//
-//        flightController.ticketsByName()
-//            .assign(to: &$tickets)
-//    }
-//
-//    func delete(_ ticket: Ticket) {
-//        flightController.delete(ticket.id)
-//    }
-//
-//    func addTicket() {
-//        flightController.addTicket(flightId: flightId)
-//    }
-//}
 
 class TicketViewModel: ObservableObject {
     @Published var name: String
