@@ -29,7 +29,7 @@ class FlightController {
             .eraseToAnyPublisher()
     }
 
-    func guestCount() -> AnyPublisher<Int, Never> {
+    func ticketCount() -> AnyPublisher<Int, Never> {
         ticketsByName().map(\.count).eraseToAnyPublisher()
     }
 

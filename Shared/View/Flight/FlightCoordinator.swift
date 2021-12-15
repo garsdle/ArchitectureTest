@@ -78,6 +78,7 @@ class LoadingViewModel: ObservableObject {
     }
 }
 
+
 class FlightViewModel: ObservableObject {
     @Published private(set) var flightName: String
     @Published private(set) var tickets: [Ticket] = []
@@ -131,7 +132,7 @@ class TicketViewModel: ObservableObject {
             .store(in: &cancellables)
     }
 
-    func update(name: String) {
+    private func update(name: String) {
         flightController.update(name: name, ticketId: ticketId)
     }
 }
