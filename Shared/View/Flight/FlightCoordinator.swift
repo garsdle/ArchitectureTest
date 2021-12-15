@@ -7,26 +7,27 @@ class FlightCoordinator: ObservableObject {
     var loadingViewModel: LoadingViewModel!
     let switchToAircraft: () -> Void
 
-    private let environment: AppEnvironment
+    private let flightController: FlightController
     
-    init(switchToAircraft: @escaping () -> Void, environment: AppEnvironment) {
+    init(switchToAircraft: @escaping () -> Void, flightController: FlightController) {
         self.switchToAircraft = switchToAircraft
-        self.environment = environment
+        self.flightController = flightController
         
         self.loadingViewModel = LoadingViewModel(onFlightLoaded: open(flight:),
-                                                 flightController: environment.flightController)
+                                                 flightController: flightController)
         
-        if let flight = environment.flightController.flight {
+        if let flight = flightController.flight {
             open(flight: flight)
         }
     }
+    
     func open(flight: NestingFlight) {
-        self.flightViewModel = FlightViewModel(flight: flight, flightController: environment.flightController)
+        self.flightViewModel = FlightViewModel(flight: flight, flightController: flightController)
     }
 
     func open(ticket: Ticket) {
         self.ticketViewModel = TicketViewModel(ticket: ticket,
-                                              flightController: environment.flightController)
+                                              flightController: flightController)
     }
 }
 

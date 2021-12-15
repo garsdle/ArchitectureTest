@@ -3,19 +3,21 @@ import Combine
 
 class MainCoordinator: ObservableObject {
     @Published var screen: Screen!
-    private let environment: AppEnvironment
 
-    init(environment: AppEnvironment) {
-        self.environment = environment
+    let flightController = FlightController(api: current.api, uuidGenerator: current.uuidGenerator)
+    
+    init() {
         presentFlight()
     }
 
     func presentAircraft() {
-        screen = .aircraft(.init(switchToFlight: presentFlight, environment: environment))
+        screen = .aircraft(AircraftCoordinator(switchToFlight: presentFlight,
+                                               flightController: flightController))
     }
 
     func presentFlight() {
-        screen = .flight(.init(switchToAircraft: presentAircraft, environment: environment))
+        screen = .flight(FlightCoordinator(switchToAircraft: presentAircraft,
+                                           flightController: flightController))
     }
 
     enum Screen {
@@ -34,11 +36,5 @@ struct MainCoordinatorView: View {
         case .aircraft(let aircraftCoordinator):
             AircraftCoordinatorView(coordinator: aircraftCoordinator)
         }
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        MainCoordinatorView(coordinator: MainCoordinator(environment: .mock))
     }
 }
